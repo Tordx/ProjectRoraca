@@ -19,6 +19,13 @@ import {Picker} from '@react-native-picker/picker';
 
 function Create_view({navigation}){
 
+    const _selectedValue = () => {
+        if (setSelectedValue('CS')) {
+            navigation.navigate('TabView')
+        }
+
+    }
+
     const [selectedValue, setSelectedValue] = useState();
 
     const url= "https://cdn.websitepolicies.com/uploads/n/g/n/a/sample-terms-and-conditions-template.png?w=1140&dpr=1.0"
@@ -110,7 +117,7 @@ function Create_view({navigation}){
                 <Pressable           
             style = {styles.create_account}
             android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
-            onPress = {onPressHandler}
+            onPress = {_selectedValue}
             >
               <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> SIGN UP </Text>
 

@@ -12,6 +12,7 @@ import {
 import {FlatListSlider} from 'react-native-flatlist-slider';
 import _StoreItemList from '../Components/StoreItemSlider';
 import Divider from 'react-native-divider';
+import Menu_List from './MenuList';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -39,14 +40,12 @@ const _StoreProfile_CSVIEW = () => {
             </View>
             <_StoreItemList/>
             <Divider/>
-            <Pressable style = {{alignItems: 'center'}}>
-                <Text> VIEW ALL </Text>
-            </Pressable>
+            {/* FLAT LIST */}
             <Pressable style = {{ justifyContent: 'center',
                 alignItems: 'center',
                 borderRadius: 20,}}
                 onPress = {()=> {
-                    navigation.navigate('Menu_First');
+                    navigation.navigate('MenuList');
                 }}
                 >
                 <ImageBackground
@@ -64,61 +63,7 @@ const _StoreProfile_CSVIEW = () => {
                         }}>Appetizers</Text>
                     </View>
                 </ImageBackground>
-            </Pressable>
-            <Pressable style = {{ justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 20,}}>
-                <ImageBackground 
-                    source={Meal}
-                    style={styles.ItemCategory}
-                    imageStyle={{ borderRadius: 6}}>
-                    <View style={styles.OverlayText}>
-                        <Text style = {{color: '#fff',
-                        fontSize: 35, 
-                        fontStyle: 'italic', 
-                        fontWeight: 'bold',
-                        textShadowColor: '#000',
-                        textShadowRadius: 10
-                        }}>Meals</Text>
-                    </View>
-                </ImageBackground>
-            </Pressable>
-            <Pressable style = {{ justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 20,}}>
-                <ImageBackground 
-                    source={dessert}
-                    style={styles.ItemCategory}
-                    imageStyle={{ borderRadius: 6}}>
-                    <View style={styles.OverlayText}>
-                        <Text style = {{color: '#fff',
-                        fontSize: 35, 
-                        fontStyle: 'italic', 
-                        fontWeight: 'bold',
-                        textShadowColor: '#000',
-                        textShadowRadius: 10
-                        }}>Desserts</Text>
-                    </View>
-                </ImageBackground>
-            </Pressable>
-            <Pressable style = {{ justifyContent: 'center',
-                alignItems: 'center',
-                borderRadius: 20,}}>
-                <ImageBackground 
-                    source={drinks}
-                    style={styles.ItemCategory}
-                    imageStyle={{ borderRadius: 6}}>
-                    <View style={styles.OverlayText}>
-                        <Text style = {{color: '#fff',
-                        fontSize: 35, 
-                        fontStyle: 'italic', 
-                        fontWeight: 'bold',
-                        textShadowColor: '#000',
-                        textShadowRadius: 10
-                        }}>Drinks</Text>
-                    </View>
-                </ImageBackground>
-            </Pressable>
+            </Pressable>    
         </View>
         </ScrollView>
 
