@@ -13,10 +13,11 @@ import {
 
 } from 'react-native';
 import Divider from 'react-native-divider';
-import ProductCategory from '../utils/ProductCategory';
-import ProductAd from '../utils/StoreAd';
-import Image_slider from '../utils/ImageSlider';
-import Individual_parcel from '../utils/IndividualParcel';
+import Product_Category from '../CustomerScreen/ProductCategory';
+import ProductAd from '../CustomerScreen/StoreAd';
+import Image_slider from '../CustomerScreen/ImageSlider';
+import Individual_parcel from '../CustomerScreen/IndividualParcel';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const image = { uri: "https://i.imgur.com/ewqItWK.png" };
 
@@ -31,7 +32,7 @@ const image = { uri: "https://i.imgur.com/ewqItWK.png" };
 
   const ProductListView = () => {
 
-    navigation.navigate('ProductList');
+    navigation.navigate('StoreList');
 
   }
   
@@ -54,18 +55,24 @@ const image = { uri: "https://i.imgur.com/ewqItWK.png" };
          backgroundColor: '#ffff',
          flexDirection: 'row',
        }}>
-       
-       <Image
+       <View
        style = {{
+        alignContent: 'center',
+        justifyContent: 'center',
+        margin: 5,
+      }}
+        
+        >
+       <FontAwesome5
        
-       width: 30, 
-       height: 30, 
-       top: 3, }}
        
-       source = {{
-       uri:'https://cdn0.iconfinder.com/data/icons/food-4/500/Eat_food_fork_knife_lunch_restaurant_plate-512.png'
-       
-       }}/>
+
+       name = {'utensils'}
+       size ={15}
+
+
+       />
+       </View>
        
        <TextInput
        
@@ -77,14 +84,16 @@ const image = { uri: "https://i.imgur.com/ewqItWK.png" };
        </View>
 
 <Pressable
-style = {{margin: 15, justifyContent: 'center', alignContent: 'center'}}
+style = {{margin: 10, justifyContent: 'center', alignContent: 'center'}}
 onPress={onPressHandler}
 
 >
 
-<Image
-style = {{width: 30, height: 30,}}
-source={{uri: 'https://i.imgur.com/I1Pn0ba.png'}}
+<FontAwesome5
+
+name={'user-circle'}
+size = {30}
+color ={'#e2e2e2'}
 
 />
 
@@ -97,8 +106,7 @@ source={{uri: 'https://i.imgur.com/I1Pn0ba.png'}}
     <View  style = {styles.body} >
       <Image_slider/>
       <Individual_parcel/>
-      <ProductCategory
-      />
+      <Product_Category/>
     <Divider/>
       <Pressable
       onPress={ProductListView}

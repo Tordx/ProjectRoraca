@@ -2,7 +2,7 @@
 ////////////////////////////Customer can either sign in or sign up for new account///////////////////////////////
 /////////////////////////////////// to be exported to screencompnents/views /////////////////////////////////////
 
-import React, { useState } from 'react';
+import React from 'react';
 import {
 
   View,

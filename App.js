@@ -4,14 +4,16 @@
 import  Default_Screen from './screens/Home';
 import  Login_view  from './screens/LoginView';
 import  Create_view  from './screens/CreateView';
-import  Tab_view  from './screens/TabView';
+import  Customer_Tab  from './screens/CustomerTab';
 import Splash from './screens/splashView';
-import Product_list from './utils/StoreList';
-import _checkout from './utils/checkout';
-import _StoreItemList from './utils/StoreProfile_CSVIEW';
-import Menu_List from './utils/MenuList';
-import Product_Listing from './utils/ProductListing';
-import Product_container from './utils/ProductContainer';
+import Store_List from './CustomerScreen/StoreList';
+import _checkout from './CustomerScreen/checkout';
+import _StoreItemList from './CustomerScreen/StoreProfile_CSVIEW';
+import Menu_List from './CustomerScreen/MenuList';
+import Product_Listing from './CustomerScreen/ProductListing';
+import Product_container from './CustomerScreen/ProductContainer';
+import Seller_Tab from './screens/SellerTab';
+import Add_Product from './SellerScreen/AddProduct';
 ////////////////////////// Components ////////////////////////////
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -73,18 +75,30 @@ export default function App() {
 
             <Stack.Screen
     
-              name = 'TabView'
-              component={Tab_view}
+              name = 'CustomerTab'
+              component={Customer_Tab}
               options={{  
               headerShown: false,
                
               }} 
 
             />
+
+            <Stack.Screen
+            
+              name = 'SellerTab'
+              component={Seller_Tab}
+              options={{  
+                headerShown: false,
+                 
+                }} 
+  
+            
+            />
              <Stack.Screen
     
-              name = 'ProductList'
-              component={Product_list}
+              name = 'StoreList'
+              component={Store_List}
               headerBackAccessibilityLabel = {true}
               options = {{ 
               headerStyle: {
@@ -176,6 +190,14 @@ export default function App() {
             },
             
             }} />
+
+            <Stack.Screen
+            
+            name = 'AddProduct'
+            component={Add_Product}
+
+
+            />
             
 
           </Stack.Navigator>

@@ -19,20 +19,29 @@ import {Picker} from '@react-native-picker/picker';
 
 function Create_view({navigation}){
 
-    const _selectedValue = () => {
-        if (setSelectedValue('CS')) {
-            navigation.navigate('TabView')
-        }
-
-    }
 
     const [selectedValue, setSelectedValue] = useState();
 
     const url= "https://cdn.websitepolicies.com/uploads/n/g/n/a/sample-terms-and-conditions-template.png?w=1140&dpr=1.0"
+///////////////////////////////////////////
 
-    const onPressHandler = () => {
 
-        navigation.navigate('TabView');
+
+    const CustomerTab_ = () => {
+
+        navigation.navigate('CustomerTab');
+
+    }
+
+    const SellerTab_ = () => {
+
+        navigation.navigate('SellerTab');
+
+    }
+
+    const DriverTab_ = () => {
+
+        // navigation.navigate('SellerTab');
 
     }
     
@@ -117,11 +126,28 @@ function Create_view({navigation}){
                 <Pressable           
             style = {styles.create_account}
             android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
-            onPress = {_selectedValue}
+            onPress = {CustomerTab_}
             >
-              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> SIGN UP </Text>
+              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> CUSTOMER </Text>
 
             </Pressable>
+            <Pressable           
+            style = {styles.create_account}
+            android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
+            onPress = {SellerTab_}
+            >
+              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> SELLER </Text>
+
+            </Pressable>
+            <Pressable           
+            style = {styles.create_account}
+            android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
+            onPress = {DriverTab_}
+            >
+              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> DRIVER </Text>
+
+            </Pressable>
+            
 
                 <Image
                     style = {styles.logo}

@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-function ProductCategory () {
+export default function Product_Category() {
 
   const navigation = useNavigation(); 
 
@@ -19,9 +19,9 @@ function ProductCategory () {
       <View style ={{flexDirection: 'row',}} >
       <View style = {{alignItems: 'center'}} >
         <Pressable style = {styles._cell1}
-        onPress={() => {
-          navigation.navigate('_ProductCategory');
-        }}
+        // onPress={() => {
+        //   navigation.navigate('_ProductCategory');
+        // }}
         >
           
       <Image
@@ -153,5 +153,3 @@ const styles = StyleSheet.create({
     margin: 10,
   }
 });
-
-export default ProductCategory;

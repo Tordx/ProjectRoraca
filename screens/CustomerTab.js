@@ -3,18 +3,18 @@
 import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Product_view } from '../View/ProductView';
-import { Chat_view } from '../View/ChatView';
-import { Profile_view } from '../View/ProfileView';
+import { Product_view } from '../View/CustomerProductView';
+import { Chat_view } from '../View/CustomerChatView';
+import { Profile_view } from '../View/CustomerProfileView';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const Tab = createBottomTabNavigator();
+const Customer = createBottomTabNavigator();
 
-function Tab_view () {
+function Customer_Tab () {
 
     return (
        
-      <Tab.Navigator initialRouteName='FoodLane'
+      <Customer.Navigator initialRouteName='FoodLane'
         
         screenOptions={({route}) => ({
           tabBarIcon:({focused, size, color}) => {
@@ -51,13 +51,14 @@ function Tab_view () {
           activeBackgroundColor: '#e2e2e2',
           inactiveBackgroundColor: '#ffff',
           showLabel: false,
+        
 
         }}
 
         
       >
 
-        <Tab.Screen
+        <Customer.Screen
   
           name = 'FoodLane'
           component={Product_view}
@@ -65,9 +66,10 @@ function Tab_view () {
             headerShown: false,
           //   headerStyle: {
           //     backgroundColor: '#e2e2e2' }
+         
           }} 
         />
-        <Tab.Screen
+        <Customer.Screen
   
           name = 'Chat'
           component={Chat_view}
@@ -79,7 +81,7 @@ function Tab_view () {
 
 
         />
-        <Tab.Screen
+        <Customer.Screen
   
           name = 'Profile'
           component={Profile_view}
@@ -92,10 +94,10 @@ function Tab_view () {
         />
 
 
-      </Tab.Navigator>
+      </Customer.Navigator>
 
     )
 
 }
 
-export default Tab_view;
+export default Customer_Tab;

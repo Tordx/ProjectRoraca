@@ -41,9 +41,11 @@ const _StoreProfile_CSVIEW = () => {
             <_StoreItemList/>
             <Divider/>
             {/* FLAT LIST */}
-            <Pressable style = {{ justifyContent: 'center',
+            <Pressable style = {{ 
+                justifyContent: 'center',
                 alignItems: 'center',
-                borderRadius: 20,}}
+                borderRadius: 20,
+                }}
                 onPress = {()=> {
                     navigation.navigate('MenuList');
                 }}

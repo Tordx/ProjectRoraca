@@ -13,11 +13,11 @@ import {
 
 } from 'react-native';
 import Divider from 'react-native-divider';
-import ProductCategory from '../utils/ProductCategory';
-import ProductAd from '../utils/StoreAd';
+import ProductCategory from '../CustomerScreen/ProductCategory';
+import ProductAd from '../CustomerScreen/StoreAd';
 import SlideshowTest from '../Components/Slider';
-import Image_slider from '../utils/ImageSlider';
-import Individual_parcel from '../utils/IndividualParcel';
+import Image_slider from '../CustomerScreen/ImageSlider';
+import Individual_parcel from '../CustomerScreen/IndividualParcel';
 
 
 
