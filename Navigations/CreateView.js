@@ -108,7 +108,6 @@ function Create_view({navigation}){
                 <TextInput  style = {styles.Textinput}
                 value={password}
                 secureTextEntry
-                value={password}
                 placeholder=' Password'
                 onChangeText={(value) => setPassword(value)}
                 />
