@@ -18,6 +18,8 @@ import Add_Product from './SellerScreen/AddProduct';
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import {Provider} from 'react-redux';
+import  store  from './Redux/Store';
 
 // App.js should be clean
 
@@ -29,7 +31,7 @@ export default function App() {
 
   return (
     
-
+      <Provider store={store}>
       <NavigationContainer
       >
           <Stack.Navigator initialRouteName = 'Splash'>
@@ -202,5 +204,6 @@ export default function App() {
 
           </Stack.Navigator>
       </NavigationContainer>
-  );
+      </Provider>
+  );  
 }

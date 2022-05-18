@@ -2,7 +2,7 @@
 ////////////////////////////Customer can either sign in or sign up for new account///////////////////////////////
 /////////////////////////////////// to be exported to screencompnents/views /////////////////////////////////////
 
-import React from 'react';
+import React, {useState} from 'react';
 import {
 
   View,
@@ -13,17 +13,48 @@ import {
   TextInput,
   ImageBackground,
   Alert,
+  TouchableOpacity,
 
 } from 'react-native';
+import {remoteDB, remoteDBUser} from '../database/pouchDb';
 
-
-const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
 
  function Login_view ({navigation}) {
 
-  const LoginNavigation = () => {
-    Alert.alert('Error Test Login ','please ty again later');
+  // const LoginData = async ()  => {
+    
+  // }
+
+  const [username,setUsername] = useState('')
+  const [password,setPassword] = useState('')
+  const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
+  
+
+  const LoginData = async () => {
+    if((username.length == 0) && (password.length == 0) ){
+      console.log('iloveit')
+    }else{
+        try {
+          var doc = await remoteDBUser.get(username);
+          console.log(doc)
+          // Alert.alert("Succesfull Logging in")
+          if(doc.Role == 'Seller'){
+            navigation.navigate('SellerTab');
+
+          }else if(doc.Role == 'Customer'){
+            navigation.navigate('CustomerTab')
+          }else{console.log('happy')}
+         
+        } catch (err) {
+          console.log(err);
+          // Alert.alert("Error Logging in")
+        }
+    }
   }
+
+  // const LoginNavigation = () => {
+  //   Alert.alert('Error Test Login ','please ty again later');
+  // }
 
 
   const onPressHandler = () => {
@@ -31,7 +62,7 @@ const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
     navigation.navigate('CreateView');
 
   }
-
+  
 
   return (  
 
@@ -45,13 +76,17 @@ const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
 
           <Text style = {styles.login_header}> LOGIN </Text>
             <TextInput
+                value = {username}
                 style = {styles.textinput}
                 placeholder = {'username'}
+                onChangeText={(value) => setUsername(value)}
+               
             />
             <TextInput
+                 value = {password}
                 style = {styles.textinput}
-                
                 placeholder = {'password'}
+                onChangeText={(value) => setPassword(value)}
             />
 
             <Pressable>
@@ -63,7 +98,7 @@ const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
             <Pressable           
             style = {styles.login_button}
             android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
-            onPress = {LoginNavigation}
+            onPress = {LoginData}
             
             >
               <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> LOGIN </Text>

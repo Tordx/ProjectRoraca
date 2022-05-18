@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
     
     View,
@@ -7,9 +7,44 @@ import {
     TextInput,
     Pressable,
 } from 'react-native';
+import {remoteDBItem} from '../database/pouchDb';
 
 
- const Add_Product = () => {
+
+ const Add_Product = ({navigation}) => {
+
+    const [productname, setProductname] = useState('');
+    const [price, setPrice] = useState('');
+    const [deliveryfee, setDeliveryfee] = useState('');
+    const [description, setDescription] = useState('');
+
+    const setItem = () => {
+        if(productname.length == 0) {
+          console.log('ilove')
+        }else{
+         try {
+           var NewProduct = {
+             _id : productname,
+             Price : price,
+             Deliveryfee : deliveryfee,
+             Description : description,
+            
+           }
+           remoteDBItem.put(NewProduct)
+           .then((response) =>{
+             console.log(response)
+             navigation.navigate('SellerTab');
+           })
+           .catch(err=>console.log(err))
+        //    navigation.navigate('CustomerTab');
+         } catch (error) {
+          console.log(error)
+         }
+         }
+        }
+
+
+
     return (
         <View style={styles.container}>
             <Text
@@ -17,30 +52,31 @@ import {
             > Add Product </Text>
             <View style = {styles.TextInput}>
                 <TextInput
-                
+                value = {productname}
                 placeholder='Product Name'
+                onChangeText={(value) => setProductname(value)}
 
                 />
                 </View>
                 <View style = {styles.TextInput}>
                 <TextInput
-                
+                value = {price}
                 placeholder='Price'
-
+                onChangeText={(value) => setPrice(value)}
                 />
                 </View>
                 <View style = {styles.TextInput}>
                 <TextInput
-                
+                value = {deliveryfee}
                 placeholder='Delivery fee'
-
+                onChangeText={(value) => setDeliveryfee(value)}
                 />
                 </View>
                 <View style = {styles.TextInput}>
                 <TextInput
-                
+                value = {description}
                 placeholder='Description'
-
+                onChangeText={(value) => setDescription(value)}
                 />
             </View>
             <Pressable
@@ -54,6 +90,7 @@ import {
                 position: 'absolute',
                 bottom: 0,
             }}
+            onPress = {setItem}
             >
                 <Text
                 style = {{color: 'white', fontWeight: '900'}}

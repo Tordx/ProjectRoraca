@@ -6,24 +6,35 @@ import {
     StyleSheet,
     TouchableOpacity,
     ScrollView,
+    FlatList,
 
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Added_Product from '../SellerScreen/AddedProduct'
 import { useNavigation } from '@react-navigation/native';
+import {remoteDBItem} from '../database/pouchDb';
 
 export function Add_ProductView () {
 
     const navigation = useNavigation();
 
+    
+
     return (
         <View style={styles.container}>
-            <ScrollView>
+
+            {/* <FlatList
+             data={getData}
+             renderItem={renderItem}
+             keyExtractor={item => item.id}>
+            
+            </FlatList> */}
+            
             
             <Added_Product/>
 
 
-            </ScrollView>
+            
             <TouchableOpacity
             style = {styles.addproduct}
             onPress = {() => {navigation.navigate('AddProduct')}}

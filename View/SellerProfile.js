@@ -19,7 +19,7 @@ import { sub } from 'react-native-reanimated';
   const DATA = [
     {
       id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
+      title: 'Seller Profile',
     },
     {
       id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',

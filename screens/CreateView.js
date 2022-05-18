@@ -15,9 +15,48 @@ import {
   Linking,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
+import {remoteDBUser} from '../database/pouchDb';
 
 
 function Create_view({navigation}){
+
+    const [fullname, setFullaName] = useState('');
+    const [username, setUsername] = useState('');
+    const [phonenumber, setPhoneNumber] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmPassword] = useState('');
+    const generateRandomNumber = () => {
+    const randomNumber = Math.floor(Math.random() * 100) + 1;
+        return randomNumber.toString()
+    };
+
+    const setUser = () => {
+        if((username.length == 0) && (fullname.length == 0) ) {
+          console.log('ilove')
+        }else{
+         try {
+           var LoginData = {
+             _id : username,
+             Fullname : fullname,
+             Username : username,
+             Phonenumber : phonenumber,
+             Password : password,
+             ConfirmPassword : confirmpassword,
+             Role : selectedValue,
+           }
+           remoteDBUser.put(LoginData)
+           .then((response) =>{
+             console.log(response)
+           })
+           .catch(err=>console.log(err))
+           navigation.navigate('CustomerTab');
+         } catch (error) {
+          console.log(error)
+         }
+         }
+        }
+
+    
 
 
     const [selectedValue, setSelectedValue] = useState();
@@ -54,28 +93,29 @@ function Create_view({navigation}){
                 <Text style = {styles.createaccount_header}> CREATE ACCOUNT </Text>
 
                 <TextInput  style = {styles.Textinput}
-                
+                value={fullname}
                 placeholder=' Fullname'
-
+                onChangeText={(value) => setFullaName(value)}
                 />
                 <TextInput  style = {styles.Textinput}
-                
+                value={username}
                 placeholder=' Username'
-
+                onChangeText={(value) => setUsername(value)}
                 />
                 <TextInput  style = {styles.Textinput}
-                
+                value={phonenumber}
                 placeholder=' Phone number'
+                onChangeText={(value) => setPhoneNumber(value)}
                 />
-
                 <TextInput  style = {styles.Textinput}
-                
+                value={password}
                 placeholder=' Password'
+                onChangeText={(value) => setPassword(value)}
                 />
-
                 <TextInput  style = {styles.Textinput}
-                
+                value={confirmpassword}
                 placeholder=' Confirm password'
+                onChangeText={(value) => setConfirmPassword(value)}
                 />
                 <View
                 
@@ -101,10 +141,10 @@ function Create_view({navigation}){
                           }}
                         onValueChange={(itemValue, itemIndex) => setSelectedValue(itemValue)}
                     >
-                        
-                        <Picker.Item label="Customer" value="CS" />
-                        <Picker.Item label="Seller" value="SL" />
-                        <Picker.Item label="Driver" value="DR" />
+                        <Picker.Item label="Select" value="Select" />
+                        <Picker.Item label="Customer" value="Customer" />
+                        <Picker.Item label="Seller" value="Seller" />
+                        <Picker.Item label="Driver" value="Driver" />
                     </Picker>
                 </View> 
 
@@ -126,12 +166,12 @@ function Create_view({navigation}){
                 <Pressable           
             style = {styles.create_account}
             android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
-            onPress = {CustomerTab_}
+            onPress = {setUser}
             >
-              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> CUSTOMER </Text>
+              <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> CREATE ACCOUNT </Text>
 
             </Pressable>
-            <Pressable           
+            {/* <Pressable           
             style = {styles.create_account}
             android_ripple= {{color: "#ffa45e", borderRadius: 20,}}
             onPress = {SellerTab_}
@@ -146,7 +186,7 @@ function Create_view({navigation}){
             >
               <Text style = {{color: '#e2e2e2', fontWeight: '900',}}> DRIVER </Text>
 
-            </Pressable>
+            </Pressable> */}
             
 
                 <Image
