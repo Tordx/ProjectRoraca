@@ -102,6 +102,7 @@ function Create_view({navigation}){
                 placeholder=' Username'
                 onChangeText={(value) => setUsername(value)}
                 />
+                
                 <TextInput  style = {styles.Textinput}
                 value={phonenumber}
                 placeholder=' Phone number'
