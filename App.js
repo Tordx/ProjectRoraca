@@ -14,6 +14,14 @@ import Product_Listing from './CustomerScreen/ProductListing';
 import Product_container from './CustomerScreen/ProductContainer';
 import Seller_Tab from './Navigations/SellerTab';
 import Add_Product from './SellerScreen/AddProduct';
+import Liquors from './CustomerScreen/ProductCategoryItems/Liquors';
+import Drinks from './CustomerScreen/ProductCategoryItems/Drinks';
+import FastFood from './CustomerScreen/ProductCategoryItems/FastFood';
+import Fruits from './CustomerScreen/ProductCategoryItems/Fruits';
+import Meal from './CustomerScreen/ProductCategoryItems/Meal';
+import Pastry from './CustomerScreen/ProductCategoryItems/Pastry';
+import Snacks from './CustomerScreen/ProductCategoryItems/Snacks';
+import Vegan from './CustomerScreen/ProductCategoryItems/Vegan';
 ////////////////////////// Components ////////////////////////////
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
@@ -207,6 +215,86 @@ export default function App() {
 
 
             />
+            <Stack.Screen
+            
+            name = 'Liquors'
+            component={Liquors}
+            options = {{
+            title: 'Liquors & Beers'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Drinks'
+            component={Drinks}
+            options = {{
+            title: 'Drinks'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'FastFood'
+            component={FastFood}
+            options = {{
+            title: 'FastFood'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Fruits'
+            component={Fruits}
+            options = {{
+            title: 'Fruits'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Meal'
+            component={Meal}
+            options = {{
+            title: 'Meal'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Pastry'
+            component={Pastry}
+            options = {{
+            title: 'Pastry'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Snacks'
+            component={Snacks}
+            options = {{
+            title: 'Snacks'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Vegan'
+            component={Vegan}
+            options = {{
+            title: 'Vegan'
+            }}
+
+
+          />
             
 
           </Stack.Navigator>

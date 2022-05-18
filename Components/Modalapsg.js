@@ -10,12 +10,16 @@ import {
 } from 'react-native';
 import ImagePicker from 'react-native-image-crop-picker';
 import Divider from 'react-native-divider';
+import { useSelector , useDispatch } from 'react-redux';
+import {setTaskId, setItems , setDones, setImages} from "../Redux/TaskReducer"
 
 
 
-export const Modal_apsg = () => {
+export const Modal_apsg = ({navigation}) => {
 
-    const [image, setImage] = useState('https://deconova.eu/wp-content/uploads/2016/02/default-placeholder.png');
+    const dispatch = useDispatch();
+
+    const [image, setImage] = useState('');
     const [showModal, setshowModal] = useState(false);
 
     const options = {
@@ -36,10 +40,14 @@ export const Modal_apsg = () => {
             }).then(image => {
                 console.log(image);
                 setImage(image.path);
+                setshowModal(false)
+
             })
          
         
         }
+
+        dispatch(setImages(image));
 
         
         

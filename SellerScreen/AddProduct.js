@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { 
     
     View,
@@ -7,11 +7,50 @@ import {
     Pressable,
     ScrollView,
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
+import {TextInput} from 'react-native-paper'; 
 import { Modal_apsg } from '../Components/Modalapsg';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {remoteDBItem} from '../database/pouchDb';
+import { useSelector } from 'react-redux';
 
- const Add_Product = () => {
+
+ const Add_Product = ({navigation}) => {
+
+  const Images = useSelector(state => state.items.Images);
+
+   const [productname, setProductname] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
+    const [preptime, setPreptime] = useState('');
+    const [deliveryfee, setDeliveryfee] = useState('');
+
+  const setNewItem = () => {
+        if((productname.length == 0) && (description.length == 0) ) {
+          console.log('ilove')
+        }else{
+         try {
+           var NewProductData = {
+             _id : productname,
+             Description : description,
+             Category : category,
+             Price : price,
+             Preptime : preptime,
+             Deliveryfee : deliveryfee,
+              image : Images
+           }
+           remoteDBItem.put(NewProductData)
+           .then((response) =>{
+             console.log(response)
+
+           })
+           .catch(err=>console.log(err))
+           navigation.navigate('AddProductView');
+         } catch (error) {
+          console.log(error)
+         }
+         }
+        }
 
     const [text, setText] = React.useState("");
 
@@ -37,6 +76,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
+                    onChangeText={(value) => setProductname(value)}
+                   value={productname}
                    label="Product Name"
                     theme={{    
                         colors: {
@@ -61,7 +102,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                
+                onChangeText={(value) => setDescription(value)}
+                value={description}
                 mode ='Outlined'
                 multiline
                 theme={{    
@@ -88,8 +130,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                   </View>
                 <TextInput
-                
-                
+                  onChangeText={(value) => setCategory(value)}
+                  value={category}
                   label="Category"
                   theme={{    
                     colors: {
@@ -114,6 +156,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput 
+                onChangeText={(value) => setPrice(value)}
+                value={price}
                 keyboardType='numeric'
                 label="Price"
                 theme={{    
@@ -139,6 +183,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
+                onChangeText={(value) => setPreptime(value)}
+                value={preptime}
                 keyboardType='numeric'
                 mode ='Outlined'
                 theme={{    
@@ -165,8 +211,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                
-                
+                onChangeText={(value) => setDeliveryfee(value)}
+                value={deliveryfee}
                 label="Delivery fee"
                 theme={{    
                     colors: {
@@ -202,6 +248,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                 position: 'absolute',
                 bottom: 0,
             }}
+            onPress={setNewItem}
             >
                 <Text
                 

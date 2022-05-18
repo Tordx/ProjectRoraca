@@ -15,7 +15,7 @@ import {remoteDBItem,StartsSync,localDBWOWDBItem} from '../database/pouchDb';
 import { useSelector , useDispatch } from 'react-redux';
 import {setTaskId, setItems , setDones} from "../Redux/TaskReducer"
 
-export default function Added_Product () {
+export default function Added_Product ({navigation}) {
 
     const dispatch = useDispatch();
 
@@ -34,7 +34,7 @@ export default function Added_Product () {
             });
             if(result.rows){
                 let modifiedArr = result.rows.map(function(item){
-                return item.id
+                return item.doc._id
             });
             
             setItemdata(modifiedArr)
