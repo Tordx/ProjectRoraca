@@ -13,6 +13,7 @@ import {
   FlatList,
   Alert,
   TouchableHighlight,
+  TouchableOpacity,
 
 } from 'react-native';
 import Store_orders from '../Components/StoreOrders';
@@ -20,7 +21,6 @@ import History from '../Components/StoreHistory';
 import _createClass from '@babel/runtime/helpers/createClass';
 import Divider from 'react-native-divider';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { TouchableOpacity } from 'react-native-gesture-handler';
 import ImagePicker from 'react-native-image-crop-picker';
 
 
@@ -41,9 +41,9 @@ const options = {
 
       ImagePicker.openPicker({
           
-          useFrontCamera: true,
           width: 400,
           height: 300,
+          borderRadius: 15,
       }).then(image => {
           console.log(image);
           setImage(image.path);
@@ -54,34 +54,42 @@ const options = {
 
 const [history, showhistory] = useState(false);
 
-const _walletbalance = () => {
-    Alert.alert('No payment linked', 'link your choice of payment first');
-  
-};
-
   return (
 
     <View style = {styles.body}>
        
       <View style = {styles.Profile} >
 
-        <ImageBackground
+        <View
+          style = {{ 
+            width: 100,
+            height: 100,
+            borderRadius: 15
+        }}>
+          <ImageBackground
             source={{uri: image}}
-            style = {styles.profileImage}
-            imagestyle = {{borderRadius: 500,}}
-            resize = 'cover'>
-        <TouchableOpacity
-        onPress={OpenGallery}
+            style = {{ width: 100,
+              height: 100,
+              bottom: -20,
+              right: 5,
+              alignItems: 'center',
+              justifyContent: 'center'}}
+            imagestyle = {{borderRadius: 100,}}>
+          <TouchableOpacity
+          onPress={OpenGallery}
         >
+          <View style = {{justifyContent: 'center', alignSelf: 'center'}}>
           <FontAwesome5 
         
-            style = {{justifyContent: 'center', alignSelf: 'center'}}
+           
             name = {'image'}
-            size ={30}
+            size ={50}
             />
-        </TouchableOpacity>    
+            </View>
+          </TouchableOpacity>    
 
-        </ImageBackground>
+          </ImageBackground>
+          </View>
         <View style = {{left: 40, flexDirection: 'column', bottom: -20}}>
         <Text style = {{fontSize: 30, fontWeight: 'bold'}}>Le Coucou</Text>
         <Text>+ 18565054 121</Text>
@@ -90,47 +98,39 @@ const _walletbalance = () => {
       </View>
       <Divider/>
       <View style = {{flexDirection: 'row', top: 2, }}>
-
-      <View  style = {{
+        <View  style = {{
          
-         width: 325, 
-         height: 35,
-         borderRadius: 10, 
-         margin: 10,
-         backgroundColor: '#ffff',
-         flexDirection: 'row',
-      }}>
-       <View
-       style = {{
-        alignContent: 'center',
-        justifyContent: 'center',
-        margin: 5,
-      }}
-        
-        >
-       <FontAwesome5
+          width: 325, 
+          height: 35,
+          borderRadius: 10, 
+          margin: 10,
+          backgroundColor: '#ffff',
+          flexDirection: 'row',
+        }}>
+        <View
+          style = {{
+          alignContent: 'center',
+          justifyContent: 'center',
+          margin: 5,
+        }}>
+          <FontAwesome5
        
+            name = {'search'}
+            size ={15}
+          />
+        </View>
        
-
-       name = {'search'}
-       size ={15}
-
-
-       />
-       </View>
+          <TextInput
        
-       <TextInput
-       
-       style = {{top: 3,}}
-       placeholder = 'search transaction'
-       
-       
-       />
-       </View>
-       </View>
-        <Pressable  >
+            style = {{top: 3,}}
+            placeholder = 'search transaction'
+          />
+        </View>
+      </View>
+        <Pressable >
           <Text style = {{ color: '#ffa45e', fontStyle: 'italic', margin: 20,}}> Transaction History </Text>
         </Pressable>
+    
     <View style = {{width: 450, height: 460}}>
       {
         history?<Store_orders/>: <History/>
@@ -189,17 +189,6 @@ const _walletbalance = () => {
       elevation: 17,
     
     
-    },
-
-    profileImage: {
-        width: 100,
-        height: 100, 
-        borderRadius: 100,
-        bottom: -20,
-        right: 5,
-        alignItems: 'center',
-        justifyContent: 'center'
-
     },
     Profile: {
 

@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import { 
     
     View,
@@ -173,7 +173,6 @@ import {remoteDBItem} from '../database/pouchDb';
                 position: 'absolute',
                 bottom: 0,
             }}
-            onPress = {setItem}
             >
                 <Text
                 
