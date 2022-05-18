@@ -1,6 +1,6 @@
 
-import React from 'react';
 
+import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {Add_ProductView} from '../View/AddProductView';
 import {Seller_Chat} from '../View/SellerChatView';
@@ -10,6 +10,7 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 const Seller = createBottomTabNavigator();
 
 const Seller_Tab = () => {
+
 
 
     return (

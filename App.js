@@ -23,16 +23,21 @@ import Pastry from './CustomerScreen/ProductCategoryItems/Pastry';
 import Snacks from './CustomerScreen/ProductCategoryItems/Snacks';
 import Vegan from './CustomerScreen/ProductCategoryItems/Vegan';
 ////////////////////////// Components ////////////////////////////
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Provider} from 'react-redux';
 import  store  from './Redux/Store';
 
+import React from 'react';
+
 // App.js should be clean
 
 
 export default function App() {
+
+
+
+
 
   const Stack = createNativeStackNavigator();
 

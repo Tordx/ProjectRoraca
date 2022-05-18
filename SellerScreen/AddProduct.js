@@ -6,6 +6,9 @@ import {
     StyleSheet,
     Pressable,
     ScrollView,
+    TouchableOpacity,
+    
+    
 } from 'react-native';
 import {TextInput} from 'react-native-paper'; 
 import { Modal_apsg } from '../Components/Modalapsg';
@@ -52,15 +55,13 @@ import { useSelector } from 'react-redux';
          }
         }
 
-    const [text, setText] = React.useState("");
-
     return (
         <View style={styles.container}>
             <ScrollView>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <Text
-            style = {{fontSize: 20, fontWeight: 'bold', marginTop: 20,}}
-            > Add Product </Text>
+            style = {{fontSize: 20, fontWeight: 'bold', marginTop: 20,}}> 
+            Add Product </Text>
             <View style = {styles.TextInput}>
               <View
                     style = {{
@@ -111,9 +112,8 @@ import { useSelector } from 'react-redux';
                       primary: '#225'
                     }
                   }}
-                label="Description"
+              
                 />
-                
                 </View>
                 <View style = {styles.TextInput}>
                   <View
@@ -125,10 +125,10 @@ import { useSelector } from 'react-redux';
         
                     >
                     <FontAwesome5
-                      name = {'bookmark'}
+                      name = {'coins'}
                       size ={15}
                     />
-                  </View>
+                </View>
                 <TextInput
                   onChangeText={(value) => setCategory(value)}
                   value={category}
@@ -165,7 +165,7 @@ import { useSelector } from 'react-redux';
                       primary: '#225'
                     }
                   }}
-
+       
                 />
                 </View>
                 <View style = {styles.TextInput}>
@@ -192,7 +192,6 @@ import { useSelector } from 'react-redux';
                       primary: '#225'
                     }
                   }}
-                label="Preparation Time (mins)"
                 />
                 
             </View>
@@ -279,5 +278,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#e2e2e2',
     },
 });
+ 
 
 export default Add_Product;

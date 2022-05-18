@@ -34,7 +34,6 @@ export const Modal_apsg = ({navigation}) => {
 
             ImagePicker.openPicker({
                 
-                useFrontCamera: true,
                 width: 400,
                 height: 300,
             }).then(image => {

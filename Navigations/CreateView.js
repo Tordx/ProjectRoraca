@@ -2,7 +2,7 @@
 // exported to 
 //When User select Create account
 
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import {
 
   View,
@@ -13,6 +13,8 @@ import {
   TextInput,
   ImageBackground,
   Linking,
+  Alert,
+  BackHandler,
 } from 'react-native';
 import {Picker} from '@react-native-picker/picker';
 import {remoteDBUser} from '../database/pouchDb';
@@ -20,6 +22,7 @@ import {remoteDBUser} from '../database/pouchDb';
 
 function Create_view({navigation}){
 
+    const [selectedValue, setSelectedValue] = useState();
     const [fullname, setFullaName] = useState('');
     const [username, setUsername] = useState('');
     const [phonenumber, setPhoneNumber] = useState('');
@@ -31,9 +34,24 @@ function Create_view({navigation}){
     };
 
     const setUser = () => {
-        if((username.length == 0) && (fullname.length == 0) ) {
-          console.log('ilove')
-        }else{
+
+        if(fullname.length <= 5) {
+        Alert.alert('Oops!', ' fullname must be atleast 6')
+        console.log('username')
+        } else if(username.length <= 5){
+        Alert.alert('Oops!', ' username must be atleast 6')
+        console.log('username')
+        } else if (phonenumber.length <= 9){
+        Alert.alert('Oops!', 'phone number is incorrect')
+        console.log('phonenumber')
+        } else if (password.length <= 6) {
+        Alert.alert('Oops!', 'password is short')
+        console.log('password')
+        } else if (confirmpassword != password) {
+        Alert.alert('Oops!', 'password did not match')
+        console.log('confirmpassword')
+        } else {
+       
          try {
            var LoginData = {
              _id : username,
@@ -53,41 +71,20 @@ function Create_view({navigation}){
          } catch (error) {
           console.log(error)
          }
-         }
-        }
-
+    }
+}
     
 
 
-    const [selectedValue, setSelectedValue] = useState();
+
 
     const url= "https://cdn.websitepolicies.com/uploads/n/g/n/a/sample-terms-and-conditions-template.png?w=1140&dpr=1.0"
-///////////////////////////////////////////
 
+ 
 
-
-    const CustomerTab_ = () => {
-
-        navigation.navigate('CustomerTab');
-
-    }
-
-    const SellerTab_ = () => {
-
-        navigation.navigate('SellerTab');
-
-    }
-
-    const DriverTab_ = () => {
-
-        // navigation.navigate('SellerTab');
-
-    }
-    
     return(
 
         
-
         <View style = {styles.body}>
 
                 <Text style = {styles.createaccount_header}> CREATE ACCOUNT </Text>
@@ -109,6 +106,7 @@ function Create_view({navigation}){
                 onChangeText={(value) => setPhoneNumber(value)}
                 />
                 <TextInput  style = {styles.Textinput}
+                value={password}
                 secureTextEntry
                 value={password}
                 placeholder=' Password'
