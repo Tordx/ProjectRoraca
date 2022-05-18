@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView } from 'react-native';
-import Store_Ad from './StoreAd';
+import Store_Ad from '../Components/StoreAd';
 
 export default function Store_List () {
     return (

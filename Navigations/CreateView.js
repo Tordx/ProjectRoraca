@@ -63,18 +63,19 @@ function Create_view({navigation}){
                 placeholder=' Username'
 
                 />
+                
                 <TextInput  style = {styles.Textinput}
                 
                 placeholder=' Phone number'
                 />
 
                 <TextInput  style = {styles.Textinput}
-                
+                secureTextEntry
                 placeholder=' Password'
                 />
 
                 <TextInput  style = {styles.Textinput}
-                
+                secureTextEntry
                 placeholder=' Confirm password'
                 />
                 <View

@@ -4,7 +4,7 @@ import {
     StyleSheet,
     Pressable,
 } from 'react-native';  
-import SlideshowTest from '../Components/Slider';
+import SlideshowTest from './Slider';
 
 
 

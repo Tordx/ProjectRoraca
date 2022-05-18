@@ -50,7 +50,7 @@ const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
             />
             <TextInput
                 style = {styles.textinput}
-                
+                secureTextEntry
                 placeholder = {'password'}
             />
 
