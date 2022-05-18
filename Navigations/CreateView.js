@@ -102,18 +102,19 @@ function Create_view({navigation}){
                 placeholder=' Username'
                 onChangeText={(value) => setUsername(value)}
                 />
+                
                 <TextInput  style = {styles.Textinput}
                 value={phonenumber}
                 placeholder=' Phone number'
                 onChangeText={(value) => setPhoneNumber(value)}
                 />
                 <TextInput  style = {styles.Textinput}
-                value={password}
+                secureTextEntry
                 placeholder=' Password'
                 onChangeText={(value) => setPassword(value)}
                 />
                 <TextInput  style = {styles.Textinput}
-                value={confirmpassword}
+                secureTextEntry
                 placeholder=' Confirm password'
                 onChangeText={(value) => setConfirmPassword(value)}
                 />

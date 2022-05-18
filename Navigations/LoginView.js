@@ -85,6 +85,7 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
             <TextInput
                  value = {password}
                 style = {styles.textinput}
+                secureTextEntry
                 placeholder = {'password'}
                 onChangeText={(value) => setPassword(value)}
             />

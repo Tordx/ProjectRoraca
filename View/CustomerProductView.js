@@ -14,9 +14,9 @@ import {
 } from 'react-native';
 import Divider from 'react-native-divider';
 import ProductCategory from '../CustomerScreen/ProductCategory';
-import ProductAd from '../CustomerScreen/StoreAd';
+import ProductAd from '../Components/StoreAd';
 import SlideshowTest from '../Components/Slider';
-import Image_slider from '../CustomerScreen/ImageSlider';
+import Image_slider from '../Components/ImageSlider';
 import Individual_parcel from '../CustomerScreen/IndividualParcel';
 
 
@@ -25,7 +25,7 @@ export function Product_view({navigation}){
 
   const ProductListView = () => {
 
-    navigation.navigate('ProductList');
+    navigation.navigate('StoreList');
 
   }
 

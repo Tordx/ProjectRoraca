@@ -14,8 +14,8 @@ import {
 } from 'react-native';
 import Divider from 'react-native-divider';
 import Product_Category from '../CustomerScreen/ProductCategory';
-import ProductAd from '../CustomerScreen/StoreAd';
-import Image_slider from '../CustomerScreen/ImageSlider';
+import ProductAd from '../Components/StoreAd';
+import Image_slider from '../Components/ImageSlider';
 import Individual_parcel from '../CustomerScreen/IndividualParcel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
