@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { 
     
     View,
@@ -6,9 +6,14 @@ import {
     StyleSheet,
     Pressable,
     ScrollView,
+    TouchableOpacity,
+    
+    
 } from 'react-native';
+import {TextInput} from 'react-native-paper';
 import {remoteDBItem} from '../database/pouchDb';
-
+import { Modal_apsg } from '../Components/Modalapsg';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
  const Add_Product = ({navigation}) => {
@@ -50,8 +55,8 @@ import {remoteDBItem} from '../database/pouchDb';
             <ScrollView>
             <View style={{justifyContent: 'center', alignItems: 'center'}}>
             <Text
-            style = {{fontSize: 20, fontWeight: 'bold', marginTop: 20,}}
-            > Add Product </Text>
+            style = {{fontSize: 20, fontWeight: 'bold', marginTop: 20,}}> 
+            Add Product </Text>
             <View style = {styles.TextInput}>
               <View
                     style = {{
@@ -68,7 +73,12 @@ import {remoteDBItem} from '../database/pouchDb';
                 </View>
                 <TextInput
                 value = {productname}
-                placeholder='Product Name'
+                label="Product"
+                theme={{    
+                    colors: {
+                      primary: '#225'
+                    }
+                  }}
                 onChangeText={(value) => setProductname(value)}
 
                 />
@@ -89,14 +99,37 @@ import {remoteDBItem} from '../database/pouchDb';
                 </View>
                 <TextInput
                 value = {price}
-                placeholder='Price'
+                label="Description"
+                theme={{    
+                    colors: {
+                      primary: '#225'
+                    }
+                  }}
                 onChangeText={(value) => setPrice(value)}
                 />
                 </View>
                 <View style = {styles.TextInput}>
+                  <View
+                    style = {{
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                    margin: 5,
+                  }}
+        
+                    >
+                    <FontAwesome5
+                      name = {'coins'}
+                      size ={15}
+                    />
+                </View>
                 <TextInput
                 value = {deliveryfee}
-                placeholder='Delivery fee'
+                label="Price"
+                theme={{    
+                    colors: {
+                      primary: '#225'
+                    }
+                  }}
                 onChangeText={(value) => setDeliveryfee(value)}
                 />
                 </View>
@@ -116,7 +149,12 @@ import {remoteDBItem} from '../database/pouchDb';
                 </View>
                 <TextInput
                 value = {description}
-                placeholder='Description'
+                label="Preparation time (mins)"
+                theme={{    
+                    colors: {
+                      primary: '#225'
+                    }
+                  }}
                 onChangeText={(value) => setDescription(value)}
                 />
                 
@@ -173,6 +211,7 @@ import {remoteDBItem} from '../database/pouchDb';
                 position: 'absolute',
                 bottom: 0,
             }}
+            onPress = {setItem}
             >
                 <Text
                 

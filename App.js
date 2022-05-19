@@ -15,16 +15,21 @@ import Product_container from './CustomerScreen/ProductContainer';
 import Seller_Tab from './Navigations/SellerTab';
 import Add_Product from './SellerScreen/AddProduct';
 ////////////////////////// Components ////////////////////////////
-import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {Provider} from 'react-redux';
 import  store  from './Redux/Store';
 
+import React from 'react';
+
 // App.js should be clean
 
 
 export default function App() {
+
+
+
+
 
   const Stack = createNativeStackNavigator();
 

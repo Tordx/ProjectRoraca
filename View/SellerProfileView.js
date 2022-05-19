@@ -22,10 +22,13 @@ import _createClass from '@babel/runtime/helpers/createClass';
 import Divider from 'react-native-divider';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import ImagePicker from 'react-native-image-crop-picker';
+import { useNavigation } from '@react-navigation/native';
 
 
 
 export function Seller_Profile(){
+
+  const navigation = useNavigation();
 
 const [image, setImage] = useState('https://icon-library.com/images/default-user-icon/default-user-icon-13.jpg');
 
@@ -58,8 +61,13 @@ const [history, showhistory] = useState(false);
 
     <View style = {styles.body}>
        
-      <View style = {styles.Profile} >
+      <TouchableOpacity 
+      style = {{top: 20, justifyContent: 'flex-end'}}
+      onPress={() => navigation.navigate('Home')}>
+        <Text> Log out </Text>
+        </TouchableOpacity>
 
+      <View style = {styles.Profile} >
         <View
           style = {{ 
             width: 100,
@@ -181,12 +189,12 @@ const [history, showhistory] = useState(false);
       shadowColor: "#000",
       shadowOffset: {
         width: 0,
-        height: 8,
+        height: 2,
       },
       shadowOpacity: 0.46,
-      shadowRadius: 11.14,
+      shadowRadius: 10,
       
-      elevation: 17,
+      elevation: 53,
     
     
     },
@@ -195,7 +203,7 @@ const [history, showhistory] = useState(false);
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'center',
-        margin: 20, 
+        marginTop: 20, 
         right: 40,
         
         

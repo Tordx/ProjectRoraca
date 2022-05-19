@@ -52,10 +52,6 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
     }
   }
 
-  // const LoginNavigation = () => {
-  //   Alert.alert('Error Test Login ','please ty again later');
-  // }
-
 
   const onPressHandler = () => {
 
@@ -83,7 +79,8 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
                
             />
             <TextInput
-                 value = {password}
+                secureTextEntry
+                value = {password}
                 style = {styles.textinput}
                 placeholder = {'password'}
                 onChangeText={(value) => setPassword(value)}

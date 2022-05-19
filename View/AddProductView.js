@@ -1,6 +1,9 @@
-import React from 'react';
-import { 
+import React, {useEffect} from 'react';
+import {
 
+    
+    Alert,
+    BackHandler,
     View, 
     Text, 
     StyleSheet,
@@ -16,20 +19,19 @@ import {remoteDBItem} from '../database/pouchDb';
 
 export function Add_ProductView () {
 
+    useEffect(() => {
+        const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+        return () => backHandler.remove()
+      }, [])
+  
+
+
     const navigation = useNavigation();
 
     
 
     return (
         <View style={styles.container}>
-
-            {/* <FlatList
-             data={getData}
-             renderItem={renderItem}
-             keyExtractor={item => item.id}>
-            
-            </FlatList> */}
-            
             
             <Added_Product/>
 
