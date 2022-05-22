@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
 import { FlatList } from 'react-native-gesture-handler';
@@ -35,6 +35,7 @@ export default function Vegan() {
         const renderItem = ({ item }) => {
             return(
                 <View style={styles.item}>
+                     <Image resizeMode="cover" source={{uri:'https://firebasestorage.googleapis.com/v0/b/roraca.appspot.com/o/9a95dd5d-e665-4b34-8736-1beaa3385421.jpg?alt=media&token=8455cab0-6fab-41cd-89ff-dba39f14d8b3'}} />
                     <Text style={styles.title}>
                         {item}
                     </Text>

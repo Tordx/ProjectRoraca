@@ -2,7 +2,7 @@ import PouchDB from 'pouchdb-react-native' ; 'pouchdb-core';
 
 PouchDB.plugin(require('pouchdb-adapter-asyncstorage').default)
 export const localDBWOWDBUser = new PouchDB('RoracaUser', {adapter: 'asyncstorage'})
-export const remoteDBUser = new PouchDB('http://admin:1234@192.168.1.156:5984/roracausers')
+export const remoteDBUser = new PouchDB('http://admin:1234@192.168.1.236:5984/roracausers')
 
  export const StartSync = () => {
   localDBWOWDBUser.sync(remoteDBUser, {
@@ -19,7 +19,7 @@ export const remoteDBUser = new PouchDB('http://admin:1234@192.168.1.156:5984/ro
 }
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 export const localDBWOWDBItem = new PouchDB('RoracaItem', {adapter: 'asyncstorage'})
-export const remoteDBItem = new PouchDB('http://admin:1234@192.168.1.156:5984/roracaitem')
+export const remoteDBItem = new PouchDB('http://admin:1234@192.168.1.236:5984/roracaitem')
 
  export const StartsSync = () => {  
   localDBWOWDBItem.sync(remoteDBItem, {

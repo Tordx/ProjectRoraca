@@ -17,6 +17,8 @@ import {remoteDBItem} from '../database/pouchDb';
 import { useSelector } from 'react-redux';
 
 
+
+
  const Add_Product = ({navigation}) => {
 
   const Images = useSelector(state => state.items.Images);
@@ -28,7 +30,8 @@ import { useSelector } from 'react-redux';
     const [preptime, setPreptime] = useState('');
     const [deliveryfee, setDeliveryfee] = useState('');
 
-  const setNewItem = () => {
+  const setNewItem = async () => {
+
         if((productname.length == 0) && (description.length == 0) ) {
           console.log('ilove')
         }else{
@@ -40,12 +43,13 @@ import { useSelector } from 'react-redux';
              Price : price,
              Preptime : preptime,
              Deliveryfee : deliveryfee,
-              image : Images
+             Image: Images
            }
+           console.log(Images)
+           console.log('Images')
            remoteDBItem.put(NewProductData)
            .then((response) =>{
              console.log(response)
-
            })
            .catch(err=>console.log(err))
            navigation.navigate('AddProductView');
@@ -54,6 +58,8 @@ import { useSelector } from 'react-redux';
          }
          }
         }
+      
+      
 
     return (
         <View style={styles.container}>
@@ -254,6 +260,8 @@ import { useSelector } from 'react-redux';
                 style = {{color: 'white', fontWeight: '900', textAlign: 'center'}}
                 > ADD </Text>
             </Pressable>
+            
+            
         </View>
         
     );
