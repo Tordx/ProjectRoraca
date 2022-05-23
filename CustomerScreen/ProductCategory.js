@@ -13,12 +13,41 @@ export default function Product_Category() {
 
   const navigation = useNavigation(); 
 
+  const Liquors = () => {
+    console.log('yes')
+    navigation.navigate('Liquors')
+  }
+  const Snacks = () => {
+    navigation.navigate('Snacks')
+  }
+  const Meals = () => {
+    navigation.navigate('Meal')
+  }
+  const Fruits = () => {
+    navigation.navigate('Fruits')
+  }
+  const Drinks = () => {
+    navigation.navigate('Drinks')
+  }
+  const FastFood = () => {
+    navigation.navigate('FastFood')
+  }
+  const Pastry = () => {
+    navigation.navigate('Pastry')
+  }
+  const Vegan = () => {
+    navigation.navigate('Vegan')
+  }
+
+  
+
   return (
 
       <View style = {styles.MiddleAdd}>
       <View style ={{flexDirection: 'row',}} >
       <View style = {{alignItems: 'center'}} >
         <Pressable style = {styles._cell1}
+        onPress={Liquors}
         // onPress={() => {
         //   navigation.navigate('_ProductCategory');
         // }}
@@ -29,14 +58,17 @@ export default function Product_Category() {
     style = {{ flex: 1, justifyContent: 'center', borderRadius: 10, }}
     resizeMode='cover'
     source = {{uri: 'https://images.pexels.com/photos/1089930/pexels-photo-1089930.jpeg'}}
-
+    
 />
       
         </Pressable>
+        
         <Text>Liquor & Beer</Text>
         </View>  
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1}
+        onPress={Snacks}
+        >
           
       <Image
     
@@ -50,7 +82,9 @@ export default function Product_Category() {
         <Text>Snacks</Text>
         </View>    
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1}
+        onPress={Meals}
+        >
           
       <Image
     
@@ -64,7 +98,9 @@ export default function Product_Category() {
         <Text>Meal</Text>
         </View>    
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1}
+        onPress={Fruits}
+        >
           
       <Image
     
@@ -82,7 +118,9 @@ export default function Product_Category() {
   <View style = {styles.MiddleAdd}>
       <View style ={{flexDirection: 'row',}} >
       <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1} 
+        onPress={Drinks}
+        >
           
       <Image
     
@@ -96,7 +134,9 @@ export default function Product_Category() {
         <Text>Drinks</Text>
         </View>  
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1}
+        onPress={FastFood}
+        >
           
       <Image
     
@@ -110,7 +150,9 @@ export default function Product_Category() {
         <Text>Fast Food</Text>
         </View>    
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1}
+        onPress={Pastry}
+        >
           
       <Image
     
@@ -124,7 +166,9 @@ export default function Product_Category() {
         <Text>Pastry</Text>
         </View>    
         <View style = {{alignItems: 'center'}} >
-        <Pressable style = {styles._cell1} >
+        <Pressable style = {styles._cell1} 
+        onPress={Vegan}
+        >
           
       <Image
     

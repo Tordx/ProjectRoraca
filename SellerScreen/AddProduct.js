@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React,{useState} from 'react';
 import { 
     
     View,
@@ -10,45 +10,56 @@ import {
     
     
 } from 'react-native';
-import {TextInput} from 'react-native-paper';
-import {remoteDBItem} from '../database/pouchDb';
+import {TextInput} from 'react-native-paper'; 
 import { Modal_apsg } from '../Components/Modalapsg';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import {remoteDBItem} from '../database/pouchDb';
+import { useSelector } from 'react-redux';
+
+
 
 
  const Add_Product = ({navigation}) => {
 
-    const [productname, setProductname] = useState('');
-    const [price, setPrice] = useState('');
-    const [deliveryfee, setDeliveryfee] = useState('');
-    const [description, setDescription] = useState('');
+  const Images = useSelector(state => state.items.Images);
 
-    const setItem = () => {
-        if(productname.length == 0) {
+   const [productname, setProductname] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const [price, setPrice] = useState('');
+    const [preptime, setPreptime] = useState('');
+    const [deliveryfee, setDeliveryfee] = useState('');
+
+  const setNewItem = async () => {
+
+        if((productname.length == 0) && (description.length == 0) ) {
           console.log('ilove')
         }else{
          try {
-           var NewProduct = {
+           var NewProductData = {
              _id : productname,
-             Price : price,
-             Deliveryfee : deliveryfee,
              Description : description,
-            
+             Category : category,
+             Price : price,
+             Preptime : preptime,
+             Deliveryfee : deliveryfee,
+             Image: Images
            }
-           remoteDBItem.put(NewProduct)
+           console.log(Images)
+           console.log('Images')
+           remoteDBItem.put(NewProductData)
            .then((response) =>{
              console.log(response)
-             navigation.navigate('SellerTab');
            })
            .catch(err=>console.log(err))
-        //    navigation.navigate('CustomerTab');
+           navigation.navigate('AddProductView');
          } catch (error) {
           console.log(error)
          }
          }
         }
-
-
+      
+      
 
     return (
         <View style={styles.container}>
@@ -72,14 +83,14 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                value = {productname}
-                label="Product"
-                theme={{    
-                    colors: {
-                      primary: '#225'
-                    }
-                  }}
-                onChangeText={(value) => setProductname(value)}
+                    onChangeText={(value) => setProductname(value)}
+                   value={productname}
+                   label="Product Name"
+                    theme={{    
+                        colors: {
+                          primary: '#225'
+                        }
+                      }}
 
                 />
                 </View>
@@ -98,14 +109,16 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                value = {price}
-                label="Description"
+                onChangeText={(value) => setDescription(value)}
+                value={description}
+                mode ='Outlined'
+                multiline
                 theme={{    
                     colors: {
                       primary: '#225'
                     }
                   }}
-                onChangeText={(value) => setPrice(value)}
+              
                 />
                 </View>
                 <View style = {styles.TextInput}>
@@ -123,14 +136,42 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                value = {deliveryfee}
+                  onChangeText={(value) => setCategory(value)}
+                  value={category}
+                  label="Category"
+                  theme={{    
+                    colors: {
+                      primary: '#225'
+                      }
+                  }}
+
+                />
+                </View>
+                <View style = {styles.TextInput}>
+                  <View
+                    style = {{
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                    margin: 5,
+                  }}
+        
+                    >
+                    <FontAwesome5
+                      name = {'hand-holding-usd'}
+                      size ={15}
+                    />
+                </View>
+                <TextInput 
+                onChangeText={(value) => setPrice(value)}
+                value={price}
+                keyboardType='numeric'
                 label="Price"
                 theme={{    
                     colors: {
                       primary: '#225'
                     }
                   }}
-                onChangeText={(value) => setDeliveryfee(value)}
+       
                 />
                 </View>
                 <View style = {styles.TextInput}>
@@ -148,14 +189,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                value = {description}
-                label="Preparation time (mins)"
+                onChangeText={(value) => setPreptime(value)}
+                value={preptime}
+                keyboardType='numeric'
+                mode ='Outlined'
                 theme={{    
                     colors: {
                       primary: '#225'
                     }
                   }}
-                onChangeText={(value) => setDescription(value)}
                 />
                 
             </View>
@@ -174,8 +216,8 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                     />
                 </View>
                 <TextInput
-                
-                
+                onChangeText={(value) => setDeliveryfee(value)}
+                value={deliveryfee}
                 label="Delivery fee"
                 theme={{    
                     colors: {
@@ -211,13 +253,15 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
                 position: 'absolute',
                 bottom: 0,
             }}
-            onPress = {setItem}
+            onPress={setNewItem}
             >
                 <Text
                 
                 style = {{color: 'white', fontWeight: '900', textAlign: 'center'}}
                 > ADD </Text>
             </Pressable>
+            
+            
         </View>
         
     );
@@ -242,5 +286,6 @@ const styles = StyleSheet.create({
         backgroundColor: '#e2e2e2',
     },
 });
+ 
 
 export default Add_Product;

@@ -6,7 +6,8 @@ import {
     Text, 
     StyleSheet,
     Pressable,
-    ImageBackground
+    ImageBackground,
+    Image
     
     
 } from 'react-native';
@@ -15,8 +16,11 @@ import { Button, DataTable } from 'react-native-paper';
 import {remoteDBItem,StartsSync,localDBWOWDBItem} from '../database/pouchDb';
 import { useSelector , useDispatch } from 'react-redux';
 import {setTaskId, setItems , setDones} from "../Redux/TaskReducer"
+import FImage from '../Components/FastImage'
+import FastImage from 'react-native-fast-image'
 
-export default function Added_Product () {
+export default function Added_Product ({navigation}) {
+
 
     const dispatch = useDispatch();
 
@@ -35,7 +39,7 @@ export default function Added_Product () {
                 });
             if(result.rows){
                 let modifiedArr = result.rows.map(function(item){
-                return item.id
+                return item.doc
             });
             
             setItemdata(modifiedArr)
@@ -44,12 +48,17 @@ export default function Added_Product () {
             console.log('modifiedArr')
         }  
     }
+
     const renderItem = ({ item }) => {
-        return(
+        return (
             <View style={styles.item}>
-                
+                <Image 
+                style={{width:195 , height:250}}
+                resizeMode="cover"
+                source={{uri: item.Image}}
+                />
                 <Text style={styles.title}>
-                    {item}
+                    {item._id}
                 </Text>
             </View>
         )
@@ -63,7 +72,6 @@ export default function Added_Product () {
             data={itemdata}
             renderItem={renderItem}
             keyExtractor={item => item}
-            
             >       
             </FlatList>
         </View>
@@ -85,9 +93,10 @@ const styles = StyleSheet.create({
     
       },
       title: {
-        fontSize: 15,
+        width: 100,
+        height: 100,
+        fontSize: 20,
         position: 'absolute',
-        bottom: 20,
         textAlign: 'center',
         alignSelf: 'center',
         color: '#222'

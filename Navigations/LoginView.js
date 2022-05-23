@@ -16,7 +16,7 @@ import {
   TouchableOpacity,
 
 } from 'react-native';
-import {remoteDB, remoteDBUser} from '../database/pouchDb';
+import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
 
 
  function Login_view ({navigation}) {

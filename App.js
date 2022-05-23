@@ -222,6 +222,86 @@ export default function App() {
 
 
             />
+            <Stack.Screen
+            
+            name = 'Liquors'
+            component={Liquors}
+            options = {{
+            title: 'Liquors & Beers'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Drinks'
+            component={Drinks}
+            options = {{
+            title: 'Drinks'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'FastFood'
+            component={FastFood}
+            options = {{
+            title: 'FastFood'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Fruits'
+            component={Fruits}
+            options = {{
+            title: 'Fruits'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Meal'
+            component={Meal}
+            options = {{
+            title: 'Meal'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Pastry'
+            component={Pastry}
+            options = {{
+            title: 'Pastry'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Snacks'
+            component={Snacks}
+            options = {{
+            title: 'Snacks'
+            }}
+
+
+          />
+          <Stack.Screen
+            
+            name = 'Vegan'
+            component={Vegan}
+            options = {{
+            title: 'Vegan'
+            }}
+
+
+          />
             
             
 

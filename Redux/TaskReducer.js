@@ -6,7 +6,8 @@
    initialState: {
      items: [],
      taskID: 1,
-     Dones:[]
+     Dones:[],
+     Images:[]
    },
    reducers: {
      setItems: (state , action ) => {
@@ -19,12 +20,17 @@
      },
      setDones: (state , action)  => {
        state.Dones = action.payload
-   }
+     },
+      setImages: (state , action)  => {
+      state.Images = action.payload
+      console.log(action)
+      console.log('action')
+      }
  
    }
  })
  
  // Action creators are generated for each case reducer function
- export const {setItems , setTaskId , setDones} = taskReducers.actions
+ export const {setItems , setTaskId , setDones, setImages} = taskReducers.actions
  
  export default taskReducers.reducer

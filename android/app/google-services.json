@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "8697846381",
+    "project_id": "roraca",
+    "storage_bucket": "roraca.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:8697846381:android:25cd104362c6bd6136bd64",
+        "android_client_info": {
+          "package_name": "com.roraca"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "8697846381-1e6h9urgn1vjohk7m5t61fdelua3dhjn.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAmi8q5T49Bq-zLny_6pHxRLluc6Go8Rj0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "8697846381-1e6h9urgn1vjohk7m5t61fdelua3dhjn.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
