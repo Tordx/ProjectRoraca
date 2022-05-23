@@ -70,7 +70,6 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
          resizeMode="cover" 
          style={styles.bg_image}
       >
-        <View style = {styles.innerbody}>
 
           <Text style = {styles.login_header}> LOGIN </Text>
             <TextInput
@@ -115,7 +114,6 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
 
             </Pressable>
 
-          </View>
             <Image
               style = {styles.logo}
               source = {{uri: 'https://i.imgur.com/nPZfeIW.png'}}
@@ -135,7 +133,7 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
                 }}> HELP </Text>
 
             </Pressable>
-
+           
       </ImageBackground>
 
 
@@ -149,7 +147,7 @@ const styles = StyleSheet.create({
       width: 250,
       height: 100,
       position: 'absolute',
-      bottom: 30,
+      bottom: 20,
 
 
     },  
@@ -217,8 +215,6 @@ const styles = StyleSheet.create({
     },
 
     body: {
-
-        flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
         backgroundColor: '#e2e2e2'
