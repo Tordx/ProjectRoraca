@@ -7,21 +7,22 @@ import {
     StyleSheet,
     Pressable,
     ImageBackground,
-    Image
-    
+    Image,
+    TouchableOpacity
     
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Button, DataTable } from 'react-native-paper';
 import {remoteDBItem,StartsSync,localDBWOWDBItem} from '../database/pouchDb';
 import { useSelector , useDispatch } from 'react-redux';
-import {setTaskId, setItems , setDones} from "../Redux/TaskReducer"
+import {setTaskId, setItems , setDones, setSelectedItem} from "../Redux/TaskReducer"
 import FImage from '../Components/FastImage'
 import FastImage from 'react-native-fast-image'
+import { useNavigation } from '@react-navigation/native';
 
-export default function Added_Product ({navigation}) {
+export default function Added_Product ({}) {
 
-
+    const navigation = useNavigation(); 
     const dispatch = useDispatch();
 
     const [itemdata,setItemdata] = useState('')
@@ -49,8 +50,17 @@ export default function Added_Product ({navigation}) {
         }  
     }
 
+    const selectedItem = (item) => {
+        let selectedItemId = item
+        dispatch(setSelectedItem(selectedItemId))
+        console.log(selectedItemId)
+        console.log('selectedItemId')
+        navigation.navigate('UpdateItem')
+    }
+
     const renderItem = ({ item }) => {
         return (
+            <TouchableOpacity onPress={() => selectedItem(item)}>
             <View style={styles.item}>
                 <Image 
                 style={{width:195 , height:250}}
@@ -61,6 +71,7 @@ export default function Added_Product ({navigation}) {
                     {item._id}
                 </Text>
             </View>
+            </TouchableOpacity>
         )
     }
 

@@ -29,6 +29,7 @@ import {Provider} from 'react-redux';
 import  store  from './Redux/Store';
 
 import React from 'react';
+import UpdateItem from './Components/UpdateItem';
 
 // App.js should be clean
 
@@ -300,6 +301,18 @@ export default function App() {
 
 
           />
+          <Stack.Screen
+            
+            name = 'UpdateItem'
+            component={UpdateItem}
+            options = {{
+            title: 'UpdateItem'
+            }}
+
+
+          />
+          
+          
             
 
           </Stack.Navigator>

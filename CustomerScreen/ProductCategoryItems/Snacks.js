@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
 import { FlatList } from 'react-native-gesture-handler';
@@ -26,7 +26,7 @@ export default function Snacks() {
           });
           if(filteredData) {
               let newFilterData = filteredData.map(item => {
-                  return item._id
+                  return item
               })
               setItemdata(newFilterData)
           }
@@ -34,24 +34,35 @@ export default function Snacks() {
 }
 
         const renderItem = ({ item }) => {
+                    
             return(
+            <TouchableOpacity>
                 <View style={styles.item}>
-                    <Text style={styles.title}>
-                        {item}
-                    </Text>
-                </View>
+                <Image 
+                style={{width:195 , height:230}}
+                resizeMode="cover"
+                source={{uri: item.Image}}
+                />
+                <Text style={styles.title}>
+                    {item._id}
+                </Text>
+            </View>
+            </TouchableOpacity>
             )
         }
 
   return (
-    <View style={styles.container}>
+
+        <View style={styles.container}>
             <FlatList
+              numColumns = {2}
             data={itemdata}
             renderItem={renderItem}
             keyExtractor={item => item}
             >       
             </FlatList>
         </View>
+    
   )
 }
 
@@ -67,4 +78,21 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
+    item: {
+        backgroundColor: '#fff',
+            width: 195,
+            height: 250,
+            borderRadius: 10,
+            margin: 5,
+    
+      },
+      title: {
+        width: 100,
+        height: 100,
+        fontSize: 20,
+        position: 'absolute',
+        textAlign: 'center',
+        alignSelf: 'center',
+        color: '#222'
+      },
 })

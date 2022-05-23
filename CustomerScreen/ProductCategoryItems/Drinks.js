@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
 import { FlatList } from 'react-native-gesture-handler';
@@ -34,9 +34,10 @@ export default function Drinks() {
 }
 
         const renderItem = ({ item }) => {
-
+            
             return(
-                <View style={styles.item}>
+            <TouchableOpacity>
+              <View style={styles.item}>
                 <Image 
                 style={{width:195 , height:230}}
                 resizeMode="cover"
@@ -45,7 +46,8 @@ export default function Drinks() {
                 <Text style={styles.title}>
                     {item._id}
                 </Text>
-            </View>
+               </View>
+            </TouchableOpacity>
             )
         }
 
