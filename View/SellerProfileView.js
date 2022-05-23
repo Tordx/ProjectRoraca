@@ -55,7 +55,7 @@ const options = {
   
   }
 
-const [history, showhistory] = useState(false);
+  const [history, showhistory] = useState(false);
 
   return (
 
@@ -141,7 +141,7 @@ const [history, showhistory] = useState(false);
     
     <View style = {{width: 450, height: 460}}>
       {
-        history?<Store_orders/>: <History/>
+        history? <Store_orders/>: <History/>
       }
       </View>
       
@@ -154,7 +154,7 @@ const [history, showhistory] = useState(false);
             
             <TouchableHighlight style = {styles.TH}
               onPress={()=> showhistory(false)}>
-            <Text style = {styles.THT}> History </Text>
+            <Text style = {styles.THT}> History </Text> 
             </TouchableHighlight>
             </View>
 

@@ -29,10 +29,10 @@ export default function Added_Product () {
 
     const getData = async() => {
         
-            var result = await remoteDBItem.allDocs({
-              include_docs: true,
-              attachments: true
-            });
+                var result = await remoteDBItem.allDocs({
+                include_docs: true,
+                attachments: true
+                });
             if(result.rows){
                 let modifiedArr = result.rows.map(function(item){
                 return item.id

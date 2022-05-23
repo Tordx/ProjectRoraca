@@ -19,25 +19,24 @@ const Product_Main_View = () => {
 
         <View style={styles.container}>
               <Pressable
-            style = {{backgroundColor: '#fff',
-            width: 195,
-            height: 250,
-            borderRadius: 10,
-            margin: 5,
-            }}
-            onPress = {() => {
-                navigation.navigate('ProductContainer')}}
-            >
+                style = {{backgroundColor: '#fff',
+                width: 195,
+                height: 250,
+                borderRadius: 10,
+                margin: 5,
+                }}
+                onPress = {() => {
+                    navigation.navigate('ProductContainer')}}>
                 <Image
                  style = {{ flex: 1, justifyContent: 'center', borderRadius: 10, }}
                 
                  source = {ProductImage}
                 />
                 
-            <Text style = {styles.text}> Alfredo Pasta </Text>
-            <Text style = {{color: 'orange', margin: 5, marginTop: -5,}}> ★★★★★ </Text>
-            <Text style = {{margin: 5, marginTop: -5,}}> $47.00 </Text>
-            </Pressable>
+                    <Text style = {styles.text}> Alfredo Pasta </Text>
+                    <Text style = {{color: 'orange', margin: 5, marginTop: -5,}}> ★★★★★ </Text>
+                    <Text style = {{margin: 5, marginTop: -5,}}> $47.00 </Text>
+               </Pressable>
             
         </View>
     );

@@ -14,6 +14,7 @@ import Product_Listing from './CustomerScreen/ProductListing';
 import Product_container from './CustomerScreen/ProductContainer';
 import Seller_Tab from './Navigations/SellerTab';
 import Add_Product from './SellerScreen/AddProduct';
+import Driver_Tab from './Navigations/DriverTab';
 ////////////////////////// Components ////////////////////////////
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -102,15 +103,24 @@ export default function App() {
   
             
             />
+            <Stack.Screen
+            
+              name = 'DriverTab'
+              component={Driver_Tab}
+              options={{  
+                headerShown: false,
+                 
+                }} 
+  
+            
+            />
              <Stack.Screen
     
               name = 'StoreList'
               component={Store_List}
               headerBackAccessibilityLabel = {true}
               options = {{ 
-              headerStyle: {
-                backgroundColor: '#222255'},
-                headerTintColor: '#e2e2e2',
+                headerTintColor: '#808080',
                 title: 'Food Lane',
               }}
 
@@ -121,7 +131,7 @@ export default function App() {
               component={_checkout}
               headerBackAccessibilityLabel = {true}
               options ={{
-                headerTintColor: '#225',
+                headerTintColor: '#808080',
                 title: 'Check Out',
               headerSearchBarOptions: {
               autoCapitalize: 'none',
@@ -136,7 +146,7 @@ export default function App() {
               component={_StoreItemList}
               options ={{
               title: '',
-              headerTintColor: '#225',
+              headerTintColor: '#808080',
               headerSearchBarOptions: {
               autoCapitalize: 'none',
               obscureBackground: false,
@@ -154,7 +164,7 @@ export default function App() {
               headerBackAccessibilityLabel = {true}
               options = {{ title: 'Appetizers',
               headerStyle: {
-              headerTintColor: '#222255',
+                headerTintColor: '#808080',
               },
               headerSearchBarOptions: {
               autoCapitalize: 'none',
@@ -172,7 +182,7 @@ export default function App() {
               headerBackAccessibilityLabel = {true}
               options = {{ title: 'Products',
               headerStyle: {
-              headerTintColor: '#222255',
+                headerTintColor: '#808080',
               },
               headerSearchBarOptions: {
               autoCapitalize: 'none',
@@ -190,7 +200,7 @@ export default function App() {
               headerBackAccessibilityLabel = {true}
               options = {{ title: '',
               headerStyle: {
-              headerTintColor: '#222255',
+                headerTintColor: '#808080',
               },
               headerSearchBarOptions: {
               autoCapitalize: 'none',
@@ -212,6 +222,7 @@ export default function App() {
 
 
             />
+            
             
 
           </Stack.Navigator>

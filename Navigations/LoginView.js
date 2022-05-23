@@ -43,7 +43,9 @@ import {remoteDB, remoteDBUser} from '../database/pouchDb';
 
           }else if(doc.Role == 'Customer'){
             navigation.navigate('CustomerTab')
-          }else{console.log('happy')}
+          }else if(doc.Role == 'Driver'){
+            navigation.navigate('DriverTab')
+          } else {console.log('happy')}
          
         } catch (err) {
           console.log(err);

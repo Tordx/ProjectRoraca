@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import {Add_ProductView} from '../View/AddProductView';
+import {Add_ProductView} from '../View/SellerProductView';
 import {Seller_Chat} from '../View/SellerChatView';
 import {Seller_Profile}  from '../View/SellerProfileView';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
@@ -15,7 +15,7 @@ const Seller_Tab = () => {
 
     return (
 
-        <Seller.Navigator initialRouteName='AddProductView'
+        <Seller.Navigator initialRouteName='SellerProductView'
 
         screenOptions={({route}) => ({
             tabBarIcon:({focused, size, color}) => {
@@ -56,14 +56,14 @@ const Seller_Tab = () => {
 
         >
             <Seller.Screen
-                name='AddProductView'
+                name='SellerProductView'
                 component={Add_ProductView}
                 options = {{
                     title: 'Listing Manager'
                 }}
             />
             <Seller.Screen
-                name='SellerChat'
+                name='SellerChatView'
                 component={Seller_Chat}
                 options = {{
                     headerShown: false,
@@ -72,7 +72,7 @@ const Seller_Tab = () => {
 
             />
             <Seller.Screen
-                name = 'SellerProfile'
+                name = 'SellerProfileView'
                 component={Seller_Profile}
                 options = {{
                     headerShown: false,

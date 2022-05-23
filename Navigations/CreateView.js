@@ -67,7 +67,7 @@ function Create_view({navigation}){
              console.log(response)
            })
            .catch(err=>console.log(err))
-           navigation.navigate('CustomerTab');
+           navigation.navigate('LoginView');
          } catch (error) {
           console.log(error)
          }

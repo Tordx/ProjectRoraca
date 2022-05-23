@@ -46,7 +46,7 @@ const Item = ({ title }) => (
   </View>
 );
 
-const store_history = () => {
+const Driver_history = () => {
 
     const renderItem = ({ item }) => (
         <Item title={item.title} />
@@ -64,7 +64,6 @@ const store_history = () => {
 };
  
 const styles = StyleSheet.create({
-  
   container: {
     justifyContent: 'center',
     alignItems: 'center',
@@ -88,4 +87,4 @@ item: {
   },
 });
 
-export default store_history;
+export default Driver_history;
