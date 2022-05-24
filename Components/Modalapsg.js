@@ -22,7 +22,7 @@ export const Modal_apsg = ({navigation}) => {
 
     const dispatch = useDispatch();
 
-    const [image, setImage] = useState('');
+    const [image, setImage] = useState('https://scontent.fcrk4-1.fna.fbcdn.net/v/t1.6435-9/87185544_903521310080816_3768760250925056000_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=2c4854&_nc_eui2=AeH33v83fOcWZXfgOUupcPiAlEvD4XdzqreUS8Phd3Oqt5xUnCLXLheRG2D_7OzrwglIbU_CZQccixU5tZv-ubsy&_nc_ohc=oxbjui3VDRoAX9PiMJe&_nc_ht=scontent.fcrk4-1.fna&oh=00_AT9kWtyAB_1PtiXjfvrhlIYm0g3axjbsah8HmpGfemxvfg&oe=62B108CD');
     const [showModal, setshowModal] = useState(false);
     const [uploading, setUploading] = useState(false);
     const [transferred, setTransferred] = useState(0);
@@ -139,12 +139,12 @@ export const Modal_apsg = ({navigation}) => {
                 </View>
             </Modal>
             <Divider/>
-            {/* <ImageBackground
-            source={{uri: image}}
+            <ImageBackground
+            // source={{uri: image}}
             style = {{height: 300, width: 400, justifyContent: 'center', alignSelf: 'center'}}
             imagestyle = {{borderRadius: 10,}}
             resize = 'cover'>
-            </ImageBackground> */}
+            </ImageBackground>
 
             <TouchableOpacity
         style={styles.Pressable}

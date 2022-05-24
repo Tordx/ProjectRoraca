@@ -15,6 +15,15 @@ import Product_container from './CustomerScreen/ProductContainer';
 import Seller_Tab from './Navigations/SellerTab';
 import Add_Product from './SellerScreen/AddProduct';
 import Driver_Tab from './Navigations/DriverTab';
+import Drinks from './CustomerScreen/ProductCategoryItems/Drinks';
+import FastFood from './CustomerScreen/ProductCategoryItems/FastFood';
+import Fruits from './CustomerScreen/ProductCategoryItems/Fruits';
+import Liquors from './CustomerScreen/ProductCategoryItems/Liquors';
+import Meal from './CustomerScreen/ProductCategoryItems/Pastry';
+import Snacks from './CustomerScreen/ProductCategoryItems/Snacks';
+import Vegan from './CustomerScreen/ProductCategoryItems/Vegan';
+import Pastry from './CustomerScreen/ProductCategoryItems/Pastry';
+import Help_center from './Navigations/Help';
 ////////////////////////// Components ////////////////////////////
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -298,6 +307,17 @@ export default function App() {
             component={Vegan}
             options = {{
             title: 'Vegan'
+            }}
+
+
+          />
+
+          <Stack.Screen
+            
+            name = 'Help'
+            component={Help_center}
+            options = {{
+            title: 'HELP CENTER'
             }}
 
 

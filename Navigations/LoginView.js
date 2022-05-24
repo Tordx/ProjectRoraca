@@ -31,7 +31,8 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
   
 
   const LoginData = async () => {
-    if((username.length == 0) && (password.length == 0) ){
+    if((username.length == 0) && (password != password) ){
+      Alert.alert('Username and password not match')
       console.log('iloveit')
     }else{
         try {
@@ -58,6 +59,12 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
   const onPressHandler = () => {
 
     navigation.navigate('CreateView');
+
+  }
+
+  const Helpcenter = () => {
+
+    navigation.navigate('Help');
 
   }
   
@@ -126,6 +133,7 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
               marginTop: 10,
               marginBottom: 10,
               }}
+              onPress = {Helpcenter}
             >
 
                 <Text style = {{

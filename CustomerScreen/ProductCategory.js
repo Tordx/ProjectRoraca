@@ -43,7 +43,7 @@ export default function Product_Category() {
 
   return (
 
-      <View style = {styles.MiddleAdd}>
+      <View style = {{alignItems: 'center'}}>
       <View style ={{flexDirection: 'row',}} >
       <View style = {{alignItems: 'center'}} >
         <Pressable style = {styles._cell1}
@@ -115,9 +115,9 @@ export default function Product_Category() {
         </View>    
       </View>
 
-  <View style = {styles.MiddleAdd}>
+  <View style = {{alignContent: 'center'}}>
       <View style ={{flexDirection: 'row',}} >
-      <View style = {{alignItems: 'center'}} >
+      <View style = {{alignContent: 'center'}} >
         <Pressable style = {styles._cell1} 
         onPress={Drinks}
         >
@@ -194,6 +194,6 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 10,
-    margin: 10,
+    margin: 7,
   }
 });

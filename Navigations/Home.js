@@ -38,21 +38,25 @@ import { useNavigation } from '@react-navigation/native';
           <View  style = {styles.body} >
 
             <Image
-                  style = {{height: 100, width: 400, alignSelf: 'center', margin: 5, borderRadius: 20,}}
+                  style = {{height: 100, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
                   source = {{uri: 'https://i.imgur.com/8IkDdx0.png'}}
             />
                 
             <Divider/>
             <Individual_parcel/>
-            <Product_Category/>
+            <Product_Category
+            
+            
+
+            />
             <Divider/>
           </View>
 
             <Image
-                  style = {{height: 150, width: 400, alignSelf: 'center', margin: 5, borderRadius: 20,}}
+                  style = {{height: 150, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
                   source = {{uri: 'https://scontent.fcrk4-1.fna.fbcdn.net/v/t1.6435-9/87185544_903521310080816_3768760250925056000_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=2c4854&_nc_eui2=AeH33v83fOcWZXfgOUupcPiAlEvD4XdzqreUS8Phd3Oqt5xUnCLXLheRG2D_7OzrwglIbU_CZQccixU5tZv-ubsy&_nc_ohc=oxbjui3VDRoAX9PiMJe&_nc_ht=scontent.fcrk4-1.fna&oh=00_AT9kWtyAB_1PtiXjfvrhlIYm0g3axjbsah8HmpGfemxvfg&oe=62B108CD'}}
                 />
-          </ScrollView>
+        </ScrollView>
     
         <View style = {{ 
                     alignSelf: 'center',
@@ -121,7 +125,7 @@ const styles = StyleSheet.create({
   body: {
 
     justifyContent: 'center',
-    alignItems: 'center',
+    alignContent: 'center',
     backgroundColor: '#e2e2e2',
     flex: 1,
   }
