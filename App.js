@@ -31,6 +31,7 @@ import {Provider} from 'react-redux';
 import  store  from './Redux/Store';
 
 import React from 'react';
+import UpdateItem from './Components/UpdateItem';
 
 // App.js should be clean
 
@@ -317,12 +318,23 @@ export default function App() {
             name = 'Help'
             component={Help_center}
             options = {{
-            title: 'HELP CENTER'
+            title: 'HELP CENTER'}}
+            />
+            <Stack.Screen
+            
+            name = 'UpdateItem'
+            component={UpdateItem}
+            options = {{
+            title: 'UpdateItem'
             }}
 
 
           />
             
+
+          
+          
+          
             
 
           </Stack.Navigator>

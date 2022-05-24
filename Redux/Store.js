@@ -6,7 +6,8 @@ export default configureStore({
     items: taskReducers,
     taskID: taskReducers,
     Dones: taskReducers,
-    Images: taskReducers
+    Images: taskReducers,
+    SelectedItem:taskReducers
     
   }
   
