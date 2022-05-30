@@ -104,7 +104,6 @@ const Help_center = () => {
                     </Text>
                 </View>
                 <PlaceOrder
-                style = {styles.helpboxtext}
                 />
                 <TouchableOpacity>
                     <Text style = {styles.helpboxtext}> send package
@@ -308,6 +307,7 @@ const styles = StyleSheet.create({
 
         width: 350,
         height: 350,
+        flexGrow: 1,
         backgroundColor: '#ffff',
         alignSelf: 'stretch',
         borderRadius: 20,
@@ -335,6 +335,7 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignContent: 'center',
         backgroundColor: '#e2e2e2',
+        height: '100%'
 
     },
 
