@@ -6,7 +6,16 @@ import {Add_ProductView} from '../View/SellerProductView';
 import {Seller_Chat} from '../View/SellerChatView';
 import {Seller_Profile}  from '../View/SellerProfileView';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Help_center from '../AppInfo/Help';
+import { 
 
+    createDrawerNavigator,
+    DrawerItem,
+    DrawerContentScrollView,
+    DrawerItemList
+  
+  } from '@react-navigation/drawer';
+  import { useNavigation } from '@react-navigation/native';
 const Seller = createBottomTabNavigator();
 
 const Seller_Tab = () => {
@@ -20,17 +29,17 @@ const Seller_Tab = () => {
         screenOptions={({route}) => ({
             tabBarIcon:({focused, size, color}) => {
               let iconName;
-                if(route.name==='AddProductView'){
+                if(route.name==='SellerProductView'){
                   iconName = 'store';
                   size = focused ? 23 : 20;
                   color = focused ? '#ffa45e': '#555'; 
   
-                } else if (route.name === 'SellerChat') {
+                } else if (route.name === 'SellerChatView') {
                   iconName = 'inbox';
                   size = focused ? 23 : 20;
                   color = focused ? '#ffa45e': '#555';
   
-                } else if (route.name === 'SellerProfile') {
+                } else if (route.name === 'SellerProfileView') {
                     iconName = 'user-alt';
                     size = focused ? 23 : 20;
                     color = focused ? '#ffa45e': '#555';
@@ -59,15 +68,16 @@ const Seller_Tab = () => {
                 name='SellerProductView'
                 component={Add_ProductView}
                 options = {{
-                    title: 'Listing Manager'
+                    title: 'Listing Items',
+                    headerTintColor: '#808080',
                 }}
             />
             <Seller.Screen
                 name='SellerChatView'
                 component={Seller_Chat}
                 options = {{
-                    headerShown: false,
-                    title: 'Chats'
+                    title: 'Chat',
+                    headerTintColor: '#808080',
                 }}
 
             />
@@ -75,7 +85,8 @@ const Seller_Tab = () => {
                 name = 'SellerProfileView'
                 component={Seller_Profile}
                 options = {{
-                    headerShown: false,
+                    title: 'Profile',
+                    headerTintColor: '#808080',
                 }}
             
             />
@@ -83,6 +94,10 @@ const Seller_Tab = () => {
             
         </Seller.Navigator>
 
-    )
-}
+
+    );
+};
+
+
+
 export default Seller_Tab;

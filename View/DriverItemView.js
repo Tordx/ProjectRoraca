@@ -71,7 +71,7 @@ export const Item_view = () => {
                 }}>
                 
                 <Pressable
-                onPress={({pressed}) => setsortUp(!sortUp)}
+                onPress={() => setsortUp(!sortUp)}
                 >
                 { sortUp ?
                 <FontAwesome5

@@ -30,17 +30,15 @@ const Store_Ad = () => {
           }}
         />
       </Pressable>
-      <Text style={{fontWeight: '900'}}> Le Coucou </Text>
+      <Text style={{fontWeight: '900',}}> Le Coucou </Text>
       <Text> P80 Delivery Fee </Text>
 
-  
     </View>
   );
 };
 
 const styles = StyleSheet.create({
   Product: {
-    
     width: 375,
     height: 175,
     borderRadius: 20,

@@ -1,26 +1,34 @@
-import React, { Component } from 'react';
+import React, { useEffect, useState } from 'react';
 import { 
     View, 
     StyleSheet,
     Pressable,
-} from 'react-native';  
-import SlideshowTest from './Slider';
+    Image,
+} from 'react-native';
 
-
+import roraca from '../Images/0rI72pu.png';
+import abbastea from '../Images/8IkDdx0.png';
+import jolibee from '../Images/127044_original.jpg';
+const images  = [roraca, abbastea, jolibee];
 
 const Image_slider = () => {
 
+    const [currentImage, setCurrentImage] = useState(null);
+
+    useEffect(() => {
+        const intervalId = setInterval(() => {
+            setCurrentImage(images[Math.floor(Math.random() * images.length)]);
+        }, 3000)
+        
+        return () => clearInterval(intervalId);
+    }, [])
     
     return (
-        <View style = {{top: 5, justifyContent: 'center', alignContent: 'center', height: 100, }}>
-        <Pressable>
-          
-          <SlideshowTest/>
-        </Pressable>
-
-
-
-      </View>
+       
+        <Image
+                  style = {{height: 220, width: 425, alignSelf: 'center', borderRadius: 10,}}
+                  source = {currentImage}
+            />
     );
 };
 const styles = StyleSheet.create({

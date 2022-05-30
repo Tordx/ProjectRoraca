@@ -1,5 +1,5 @@
 
-import React from 'react';
+import React, {useEffect} from 'react';
 import {
 
   View,
@@ -9,19 +9,25 @@ import {
   Pressable,
   TextInput,
   ScrollView,
+  BackHandler,
  
 
 } from 'react-native';
 import Divider from 'react-native-divider';
-import ProductCategory from '../CustomerScreen/ProductCategory';
-import ProductAd from '../Components/StoreAd';
-import SlideshowTest from '../Components/Slider';
+import Product_Category from '../CustomerScreen/ProductCategory';
+import Store_Ad from '../Components/StoreAd';
 import Image_slider from '../Components/ImageSlider';
-import Individual_parcel from '../CustomerScreen/IndividualParcel';
-
+import Individual_parcel from '../Components/IndividualParcel';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 
 export function Product_view({navigation}){
+
+  useEffect(() => {
+    const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)
+    return () => backHandler.remove()
+  }, [])
+
 
   const ProductListView = () => {
 
@@ -37,103 +43,63 @@ export function Product_view({navigation}){
 
   return (
 
-    <View style = {{ flex: 1, height: 50, justifyContent: 'center', alignContent: 'center', backgroundColor: '#225', 
-    }
-    }>
-      
-
-
-      <View style ={{flexDirection: 'row',}}>
-
-<View  style = {{
-           
-           width: 275, 
-           height: 35,
-           borderRadius: 5, 
-           margin: 10,
-           backgroundColor: '#ffff',
-           flexDirection: 'row',
-           
-         }}>
-         
-         <Image
-         style = {{
-         
-         width: 30, 
-         height: 30, 
-         top: 3, }}
-         
-         source = {{
-         uri:'https://cdn0.iconfinder.com/data/icons/food-4/500/Eat_food_fork_knife_lunch_restaurant_plate-512.png'
-         
-         }}
-          />
-         
-         <TextInput
-         
-         style = {{top: 3, }}
-         placeholder = 'Craving for something?'
-         
-         
-         />
-         </View>
-
-         
-
-           
-
-        <Pressable
-        pressRetentionOffset
-        onPress={CheckoutView}
-
-        >
-
-  <Image
-    style = {{width: 30, height: 30, top: 13, left: 10,}}
-    source={{uri: 'https://i.imgur.com/34oXxMD.png'}}
-
-  />
-
-</Pressable>
-
-<Pressable>
-
-<Image
-style = {{width: 30, height: 30, top: 13, left: 35,}}
-source={{uri: 'https://i.imgur.com/z9uaMDs.png'}}
-
-/>
-
-</Pressable>
-         
-         
-</View>
-
+    <View style = {styles.body}>
+          
     <ScrollView style = {{backgroundColor: '#e2e2e2'}}>
+      <Divider/>
+      <Divider/>
       <View  style = {styles.body} >
-       
-        <Image_slider/>
+
+        <Image
+              style = {{height: 100, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
+              source = {{uri: 'https://i.imgur.com/8IkDdx0.png'}}
+        />
+            
+        <Divider/>
         <Individual_parcel/>
-      <Divider style={{ background: 'black' }} variant="middle" />
+        <Product_Category/>
+        <Divider/>
 
-         <ProductCategory/>
+        <Text> VIEW ALL </Text>
+        <Store_Ad/>
+        <Store_Ad/>
+        <Store_Ad/>
 
+        
+      </View>
 
-      <Divider style={{ background: 'black' }} variant="middle" />
-
-         <Pressable  
-         
-         onPress={ProductListView}
-
-         >
-            <Text>VIEW ALL</Text>
-
-         </Pressable>
-        <ProductAd/>
-            
-            
-        </View>
+        
     </ScrollView>
+
+    <View style = {{ 
+                alignSelf: 'center',
+                elevation: 5,
+                flexDirection: 'row',
+                width: 325,
+                height: 35,
+                margin: 15,
+                borderRadius: 20,
+                backgroundColor: '#ffff',
+                position: 'absolute',
+                top: 0,
+                }}>
+
+                <View style = {{
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                    margin: 5,
+            }}>
+                    <FontAwesome5
+   
+                        name = {'search'}
+                        size ={15}
+                    />
+                </View>
+
+                    <TextInput style = {{top: 3,}}
+                        placeholder='Search our foodlane'
+            />
+      </View>
 </View>
   )
 

@@ -63,9 +63,9 @@ function Customer_Tab () {
           name = 'FoodLane'
           component={Product_view}
           options={{
-            headerShown: false,
-          //   headerStyle: {
-          //     backgroundColor: '#e2e2e2' }
+            headerTintColor: '#808080',
+            headerStyle: {
+              backgroundColor: '#e2e2e2' }
          
           }} 
         />
@@ -73,10 +73,10 @@ function Customer_Tab () {
   
           name = 'Chat'
           component={Chat_view}
-          options={{  
-            headerShown: false,
-          //   headerStyle: {
-          //     backgroundColor: '#e2e2e2' }
+          options={{
+            headerTintColor: '#808080',
+            headerStyle: {
+              backgroundColor: '#e2e2e2' }
           }} 
 
 
@@ -86,9 +86,9 @@ function Customer_Tab () {
           name = 'Profile'
           component={Profile_view}
           options={{  
-            headerShown: false,
-            // headerStyle: {
-            //   backgroundColor: '#e2e2e2' }
+            headerTintColor: '#808080',
+            headerStyle: {
+              backgroundColor: '#e2e2e2' }
           }} 
 
         />

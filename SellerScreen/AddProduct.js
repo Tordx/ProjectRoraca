@@ -52,7 +52,7 @@ import { useSelector } from 'react-redux';
              console.log(response)
            })
            .catch(err=>console.log(err))
-           navigation.navigate('AddProductView');
+           navigation.navigate('SellerProductView');
          } catch (error) {
           console.log(error)
          }

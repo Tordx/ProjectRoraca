@@ -1,10 +1,8 @@
 
-
 //////////////////////// Screens ////////////////////////////////
-import  Default_Screen from './Navigations/Home';
+
 import  Login_view  from './Navigations/LoginView';
 import  Create_view  from './Navigations/CreateView';
-import  Customer_Tab  from './Navigations/CustomerTab';
 import Splash from './Navigations/splashView';
 import Store_List from './CustomerScreen/StoreList';
 import _checkout from './CustomerScreen/checkout';
@@ -12,9 +10,7 @@ import _StoreItemList from './CustomerScreen/StoreProfile_CSVIEW';
 import Menu_List from './CustomerScreen/MenuList';
 import Product_Listing from './CustomerScreen/ProductListing';
 import Product_container from './CustomerScreen/ProductContainer';
-import Seller_Tab from './Navigations/SellerTab';
 import Add_Product from './SellerScreen/AddProduct';
-import Driver_Tab from './Navigations/DriverTab';
 import Drinks from './CustomerScreen/ProductCategoryItems/Drinks';
 import FastFood from './CustomerScreen/ProductCategoryItems/FastFood';
 import Fruits from './CustomerScreen/ProductCategoryItems/Fruits';
@@ -23,7 +19,11 @@ import Meal from './CustomerScreen/ProductCategoryItems/Pastry';
 import Snacks from './CustomerScreen/ProductCategoryItems/Snacks';
 import Vegan from './CustomerScreen/ProductCategoryItems/Vegan';
 import Pastry from './CustomerScreen/ProductCategoryItems/Pastry';
-import Help_center from './Navigations/Help';
+import Driver_drawer from './Navigations/DriverNav';
+import Seller_drawer from './Navigations/SellerNav';
+import { Home_drawer } from './Navigations/HomeNav';
+import Help_center from './AppInfo/Help'
+import About_ from './AppInfo/About';
 ////////////////////////// Components ////////////////////////////
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
@@ -32,6 +32,8 @@ import  store  from './Redux/Store';
 
 import React from 'react';
 import UpdateItem from './Components/UpdateItem';
+import Customer_drawer from './Navigations/CustomerNav';
+
 
 // App.js should be clean
 
@@ -61,14 +63,15 @@ export default function App() {
               }} 
 
             />
+
             <Stack.Screen
     
-              name = 'Home'
-              component={Default_Screen}
+              name = 'HomeNav'
+              component={Home_drawer}
               options={{  
-                headerShown: false,  
+              headerShown: false,  
               }} 
-        
+
             />
 
             <Stack.Screen
@@ -93,8 +96,8 @@ export default function App() {
 
             <Stack.Screen
     
-              name = 'CustomerTab'
-              component={Customer_Tab}
+              name = 'CustomerNav'
+              component={Customer_drawer}
               options={{  
               headerShown: false,
                
@@ -104,8 +107,8 @@ export default function App() {
 
             <Stack.Screen
             
-              name = 'SellerTab'
-              component={Seller_Tab}
+              name = 'SellerNav'
+              component={Seller_drawer}
               options={{  
                 headerShown: false,
                  
@@ -115,8 +118,8 @@ export default function App() {
             />
             <Stack.Screen
             
-              name = 'DriverTab'
-              component={Driver_Tab}
+              name = 'Dri'
+              component={Driver_drawer}
               options={{  
                 headerShown: false,
                  
@@ -124,6 +127,7 @@ export default function App() {
   
             
             />
+            
              <Stack.Screen
     
               name = 'StoreList'
@@ -318,19 +322,21 @@ export default function App() {
             name = 'Help'
             component={Help_center}
             options = {{
-            title: 'HELP CENTER'}}
-            />
-            <Stack.Screen
-            
-            name = 'UpdateItem'
-            component={UpdateItem}
-            options = {{
-            title: 'UpdateItem'
+            title: 'roraca'
             }}
-
-
-          />
             
+          />
+
+          <Stack.Screen
+            
+            name = 'About'
+            component={About_}
+            options = {{
+            title: 'roraca'
+            }}
+            
+          />
+
 
           
           

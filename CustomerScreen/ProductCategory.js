@@ -131,7 +131,7 @@ export default function Product_Category() {
 />
       
         </Pressable>
-        <Text>Drinks</Text>
+        <Text style = {{textAlign: 'center'}}>Drinks</Text>
         </View>  
         <View style = {{alignItems: 'center'}} >
         <Pressable style = {styles._cell1}
@@ -194,6 +194,6 @@ const styles = StyleSheet.create({
     width: 75,
     height: 75,
     borderRadius: 10,
-    margin: 7,
+    margin: 10,
   }
 });

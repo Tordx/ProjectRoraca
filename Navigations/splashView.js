@@ -12,7 +12,7 @@ function Splash ({navigation}) {
 
     useEffect(() => {
 setTimeout(() => {
-    navigation.replace('Home');
+    navigation.replace('HomeNav');
 }, 2000);
 
     }, []);

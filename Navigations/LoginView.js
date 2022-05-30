@@ -40,13 +40,13 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
           console.log(doc)
           // Alert.alert("Succesfull Logging in")
           if(doc.Role == 'Seller'){
-            navigation.navigate('SellerTab');
+            navigation.navigate('SellerNav');
 
           }else if(doc.Role == 'Customer'){
-            navigation.navigate('CustomerTab')
+            navigation.navigate('CustomerNav')
           }else if(doc.Role == 'Driver'){
-            navigation.navigate('DriverTab')
-          } else {console.log('happy')}
+            navigation.navigate('DriverNav')
+          } else {console.log('DriverNav')}
          
         } catch (err) {
           console.log(err);

@@ -4,7 +4,7 @@ import {
     View, 
     Text, 
     StyleSheet,
-    TouchableHighlight,
+    TouchableOpacity
 } from 'react-native';
 import { Individual_parcel_list } from '../Components/DriverIP';
 import { Seller_parcel } from '../Components/DriverSellerParcel';
@@ -12,7 +12,6 @@ import { Seller_parcel } from '../Components/DriverSellerParcel';
 export default function Item_list() {
 
     const [showParcel, setshowParcel] = useState(true);
-
     return (
 
     
@@ -24,18 +23,18 @@ export default function Item_list() {
         </View>
          
       <View style ={{flexDirection: 'row', position: 'absolute', bottom: 20,}} >
-      <TouchableHighlight style = {styles.TH}
+      <TouchableOpacity style = {styles.TH}
       onPress={()=> setshowParcel(true)}
       >
       <Text style = {styles.THT} >  Seller </Text>
-      </TouchableHighlight >
+      </TouchableOpacity >
       
      
 
-      <TouchableHighlight style = {styles.TH}
+      <TouchableOpacity style = {styles.TH}
         onPress={()=> setshowParcel(false)}>
       <Text style = {styles.THT}> Individual </Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
       </View>
 
       </View>
@@ -51,7 +50,7 @@ const styles = StyleSheet.create({
         borderColor: '#225',
         width: 150,
         height: 35,
-        backgroundColor: '#e2e2e2',
+        backgroundColor:  '#e2e2e2',
         borderRadius: 30,
         margin: 10,
         alignItems: 'center',

@@ -4,8 +4,17 @@ import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
 import { Item_view } from '../View/DriverItemView'
 import { Driver_chat } from '../View/DriverChatView';
 import { Driver_profile } from '../View/DriverProfileView';
+import Help_center from '../AppInfo/Help';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { color } from 'react-native-reanimated';
+import { 
+
+    createDrawerNavigator,
+    DrawerItem,
+    DrawerContentScrollView,
+    DrawerItemList
+  
+  } from '@react-navigation/drawer';
+  import { useNavigation } from '@react-navigation/native';
 
 const Driver = createBottomTabNavigator();
 
@@ -70,26 +79,31 @@ const Driver_Tab = () => {
                 name= 'DriverChatView'
                 component = {Driver_chat}
                 options = {{
-                headerShown: false,
+                    title: 'Chat',
+                    headerTintColor: '#808080',
                 }}
-
 
             />
             <Driver.Screen
             
                 name= 'DriverProfileView'
                 component = {Driver_profile}
-                 options = {{
-                headerShown: false,
+                options = {{
+                    title: 'Profile',
+                    headerTintColor: '#808080',
                 }}
 
-
           />
+
 
         
 
         </Driver.Navigator>
+        
     );
 };
+
+
+
 
 export default Driver_Tab;
