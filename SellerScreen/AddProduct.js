@@ -29,6 +29,7 @@ import { useSelector } from 'react-redux';
     const [price, setPrice] = useState('');
     const [preptime, setPreptime] = useState('');
     const [deliveryfee, setDeliveryfee] = useState('');
+    const [status , setStatus] = useState('')
 
   const setNewItem = async () => {
 
@@ -43,6 +44,7 @@ import { useSelector } from 'react-redux';
              Price : price,
              Preptime : preptime,
              Deliveryfee : deliveryfee,
+             Status: status,
              Image: Images
            }
            console.log(Images)
@@ -219,6 +221,32 @@ import { useSelector } from 'react-redux';
                 onChangeText={(value) => setDeliveryfee(value)}
                 value={deliveryfee}
                 label="Delivery fee"
+                theme={{    
+                    colors: {
+                      primary: '#225'
+                    }
+                  }}
+
+                />
+                </View>
+                <View style = {styles.TextInput}>
+                  <View
+                    style = {{
+                  alignContent: 'center',
+                  justifyContent: 'center',
+                  margin: 5,
+                  }}
+        
+                    >
+                    <FontAwesome5
+                      name = {'motorcycle'}
+                      size ={15}
+                    />
+                </View>
+                <TextInput
+                onChangeText={(value) => setStatus(value)}
+                value={status}
+                label="Status"
                 theme={{    
                     colors: {
                       primary: '#225'

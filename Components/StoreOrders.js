@@ -1,79 +1,87 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import { 
     View, 
     Text, 
     StyleSheet,
     FlatList,
+    TouchableOpacity
 
 } from 'react-native';
+import { remoteDBOrder } from '../database/pouchDb';
+import { useSelector } from 'react-redux';
 
-const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Second Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d74',
-      title: 'Fourth Item',
-    },
-    {
-      id: 'bd7acbea-c1b12-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: 'bd7ac3bea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
-    {
-      id: 'bd7acbe123a-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'First Item',
-    },
+export default function Store_orders  (){
 
-];
+  useEffect(() => {
+    newDatas()
+    // StartsSync()
+  }, []);
 
+  const [newdata , setNewdata] = useState('')
+  const orderItems = useSelector(state => state.items.orderItems);
 
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
-
-const Store_orders = () => {
-
+  const Update = async(item) => {
+    remoteDBOrder.get(item.doc._id).then(function(doc) {
+      return remoteDBOrder.put({
+        ...doc,
+        Status: "Done"
+      });
+    }).then(function(response) {
+      console.log(response)
+      console.log('response')
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
+  const newDatas = () => {
+    let filteredData = orderItems.filter(item => {
+      return item.doc.Status === 'Pending';
+    });
+    setNewdata(filteredData)
+    console.log(filteredData)
+    console.log('filteredData')
+  }
+  
     const renderItem = ({ item }) => (
-        <Item title={item.title} />
+    <View style ={{flexDirection: 'row' }}>
+    <TouchableOpacity>
+     <View  style={{margin: 20}}>
+        <Text style={styles.title}>
+        {item.doc._id}
+       </Text>
+    </View>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => Update(item)}>
+    <View style={{margin: 20}} >
+        <Text style={styles.title}>
+        {item.doc.Status}
+       </Text>
+    </View>
+    </TouchableOpacity>
+  
+   </View>
       );
       
     return (
         <View style={styles.container}>
             <FlatList
-            data={DATA}
+            data={newdata}
             renderItem={renderItem}
-            keyExtractor={item => item.id}
+            keyExtractor={item => String(item.doc._id)}
     />
         </View>
     );
 };
+
  
 const styles = StyleSheet.create({
-    item: {
-        backgroundColor: '#e2e2e2',
-        padding: 20,
-        marginVertical: 0,
-        marginHorizontal: 20,
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
     
-      },
+},
       title: {
         fontSize: 32,
       },
 });
 
-export default Store_orders;

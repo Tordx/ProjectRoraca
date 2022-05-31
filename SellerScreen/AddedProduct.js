@@ -13,12 +13,13 @@ import {
 } from 'react-native';
 import { FlatList } from 'react-native-gesture-handler';
 import { Button, DataTable } from 'react-native-paper';
-import {remoteDBItem,StartsSync,localDBWOWDBItem} from '../database/pouchDb';
+import {remoteDBItem,SyncItems,localDBWOWDBItem, remoteDBOrder} from '../database/pouchDb';
 import { useSelector , useDispatch } from 'react-redux';
-import {setTaskId, setItems , setDones, setSelectedItem} from "../Redux/TaskReducer"
+import {setTaskId, setItems , setDones, setSelectedItem , setOrders} from "../Redux/TaskReducer"
 import FImage from '../Components/FastImage'
 import FastImage from 'react-native-fast-image'
 import { useNavigation } from '@react-navigation/native';
+
 
 export default function Added_Product ({}) {
 
@@ -29,7 +30,8 @@ export default function Added_Product ({}) {
 
     useEffect(() => {
         getData()
-        StartsSync()
+        SyncItems()
+        orders()
       }, []);
 
     const getData = async() => {
@@ -49,6 +51,19 @@ export default function Added_Product ({}) {
             console.log('modifiedArr')
         }  
     }
+    const orders = async() => {
+        try {
+            var result = await remoteDBOrder.allDocs({
+              include_docs: true,
+            });
+            dispatch(setOrders(result.rows))
+            console.log(result)
+            console.log('result')
+          } catch (err) {
+            console.log(err);
+          }
+    }
+    
 
     const selectedItem = (item) => {
         let selectedItemId = item
@@ -82,7 +97,7 @@ export default function Added_Product ({}) {
             numColumns = {2}
             data={itemdata}
             renderItem={renderItem}
-            keyExtractor={item => item}
+            keyExtractor={item => String(item._id)}
             >       
             </FlatList>
         </View>

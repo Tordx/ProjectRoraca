@@ -11,6 +11,10 @@ import {
 import Divider from 'react-native-divider';
 import Product_Listing from './ProductListing';
 import Product_Main_View from './ProductMainView';
+import { useSelector, useDispatch } from 'react-redux';
+import { setItems } from '../Redux/TaskReducer';
+import { useNavigation } from '@react-navigation/native';
+
 
     const ProductImage = {uri: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2Fc54907276a7cb6e0545ae2128bdc984e86b6cb9d'}
     const Title = 'Chicken Alfredo Pasta'
@@ -19,7 +23,23 @@ import Product_Main_View from './ProductMainView';
     const Description = '  A freaking nice pasta dish that would definitely make you droll, freshly homemade pasta with a savoury cream topped with seared chicken and finished with parmesan and parsley '
 
 
-const Product_container = () => {
+export default function Product_container(){
+
+    const dispatch = useDispatch();
+    const SelectedItem = useSelector(state => state.items.SelectedItem);
+    const navigation = useNavigation(); 
+
+    
+
+    const checkoutItems = () => {
+        const item = SelectedItem
+        console.log(item)
+        console.log('item')
+        dispatch(setItems(item))
+        navigation.navigate('checkout')
+
+    }
+
     return (
         <View style = {{
             flex: 1, 
@@ -31,28 +51,23 @@ const Product_container = () => {
             <Image
             style  = {styles.image}
            resizeMode = 'cover'
-           source={ProductImage}
-
+           source={{uri: SelectedItem.Image}}
            />
         <Text
         style = {{
             fontSize: 25, 
             margin: 10,
             fontWeight: '500',
-        
         }}
-        > {Title}</Text>
+        > {SelectedItem._id}</Text>
          <Text
         style = {{
             fontSize: 20, 
             margin: 10,
             marginTop: -10,
             fontWeight: '400',
-
-        
         }}
-        > {Price}</Text>
-
+        > {SelectedItem.Price}</Text>
         <Text
         style = {{
             fontSize: 25, 
@@ -61,9 +76,9 @@ const Product_container = () => {
             fontWeight: '500',
             color: 'orange',
             
-        
+
         }}
-        >{Rating}</Text>
+        >{SelectedItem.Preptime}</Text>
 
         <Divider/>
 
@@ -73,14 +88,14 @@ const Product_container = () => {
             margin: 10,
             marginTop: -10,}}>
                 <Text style = {{fontWeight: '900'}}> What's in it? - </Text>
-            {Description}
+            {SelectedItem.Description}
         </Text>
         
         <Divider/>
-        <View style  = {{flexDirection: 'row', justifyContent: 'center'}}>
+        {/* <View style  = {{flexDirection: 'row', justifyContent: 'center'}}>
             <Product_Main_View/>
             <Product_Main_View/>
-        </View>
+        </View> */}
             <Divider/>
 
         </ScrollView>
@@ -94,7 +109,9 @@ const Product_container = () => {
             margin: 20,
             justifyContent: 'center',
 
-            }}>
+            }}
+            onPress={checkoutItems}
+            >
                 <Text style = {styles.BottomText} >Add to Cart</Text>
 
             </Pressable>
@@ -106,9 +123,11 @@ const Product_container = () => {
             borderRadius: 15,
             margin: 20,
             justifyContent: 'center',
+            
 
-
-            }}>
+            }}
+            
+            >
                 <Text style = {styles.BottomText} >Check Out</Text>
             </Pressable>
         </View>
@@ -168,4 +187,4 @@ elevation: 24,
     },
 });
 
-export default Product_container;
+

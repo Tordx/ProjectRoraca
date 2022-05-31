@@ -10,70 +10,80 @@ import {
 } from 'react-native';
 import { Switch } from 'react-native-paper';
 import CheckBox from '@react-native-community/checkbox';
+import { useSelector } from 'react-redux';
+import { remoteDBOrder } from '../database/pouchDb';
+import { useNavigation } from '@react-navigation/native';
+
+export default function _checkout() {
+
+  const items = useSelector(state => state.items.items);
+  const [isSelected, setSelection] = useState(false);
+   const [isSwitchOn, setIsSwitchOn] = React.useState(false);
+   const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+   const navigation = useNavigation(); 
+
+ const newData = [items]
+ console.log(newData)
+ console.log('zzzz')
+ const newID = items._id;
+ const newrev = items._rev;
+ const newDescription = items.Description;
+ const newCategory = items.Category;
+ const newPrice = items.Price;
+ const newPreptime = items.Preptime;
+ const newDeliveryfee = items.Deliveryfee;
+ const newStatus = items.Status;
+ const newImage = items.Image;
 
 
-const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'RYAN Item',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'Ryan Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d74',
-      title: 'Fourth Item',
-    },
-    {
-        id: '58694a0f-3da1-471f-bd96-145571e2239d74',
-        title: 'Fourth Item',
-      },
-      {
-        id: '58694a0f-233-471f-bd96-145571e29d74',
-        title: 'Fourth Item',
-      },
-      {
-        id: '123123-3da1-471f-bd96-145571e29d74',
-        title: 'Fourth Item',
-      },
-      {
-        id: '232321313-3da1-471f-bd96-145571e29d74',
-        title: 'Fourth Item',
-      },
 
-];
 
-const Item = ({ title }) => (
+
+const renderItem = ({ item }) => {
+  
+  return(
     <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
+        <Image 
+                style={{width:390 , height:249}}
+                resizeMode="cover"
+                source={{uri: item.Image}}
+                />
+      <Text style={styles.title}>
+          {item._id}
+      </Text>
+     </View>
+  
+  )
+}
 
-const _checkout = () => {
-
-    const renderItem = ({ item }) => (
-        <Item title={item.title} /> );
-
-    const [isSelected, setSelection] = useState(false);
-    const [isSwitchOn, setIsSwitchOn] = React.useState(false);
-    const onToggleSwitch = () => setIsSwitchOn(!isSwitchOn);
+const Orders = () => {
+    const newOrders = remoteDBOrder.put({
+        _id: newID,
+        rev: newrev,
+        Description: newDescription,
+        Category: newCategory,
+        Price:newPrice,
+        Preptime:newPreptime,
+        Deliveryfee:newDeliveryfee,
+        Status:newStatus,
+        Image:newImage,
+      }).then(function (response) {
+        console.log(response)
+        console.log('response')
+        navigation.navigate('Home')
+      }).catch(function (err) {
+        console.log(err);
+      });
+}
 
     return (
-
-      
 
         <View style={styles.container}>
             <FlatList
         
-        
-        data={DATA}
+        data={newData}
         renderItem={renderItem}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item}
 
         />
             <View style = {styles.SwitchButton}>
@@ -122,11 +132,12 @@ const _checkout = () => {
                     0.00
                 </Text>
                 <Pressable
+                onPress={Orders}
                 style = {styles.bottomcheckoutbox}>
                     <Text 
                     style = {styles.checkouttext}>
                         Check Out 
-                        <Text style = {{fontSize: 15,}}> (<Text> 0 </Text>)  </Text> 
+                        <Text style = {{fontSize: 15,}}></Text> 
                 
                     </Text>
                 </Pressable>
@@ -147,20 +158,6 @@ const styles = StyleSheet.create({
           right: 20,
 
       },
-
-    item: {
-        backgroundColor: '#e2e2e2',
-        padding: 20,
-        marginVertical: 0,
-        width: 405,
-        alignItems: 'center',
-    
-      },
-      title: {
-        fontSize: 32,
-        textAlign: 'center',
-      },
-
     SwitchButton: {
 
         flexDirection: 'row',
@@ -229,6 +226,22 @@ elevation: 3,
         backgroundColor: '#e2e2e2',
        
     },
+    item: {
+      backgroundColor: '#fff',
+          width: '100%',
+          height: 200,
+          borderRadius: 10,
+          margin: 5,
+  
+    },
+    title: {
+      width: 100,
+      height: 100,
+      fontSize: 20,
+      position: 'absolute',
+      textAlign: 'center',
+      alignSelf: 'center',
+      color: '#222'
+    },
 });
 
-export default _checkout;
