@@ -21,6 +21,7 @@ import Vegan from './CustomerScreen/ProductCategoryItems/Vegan';
 import Pastry from './CustomerScreen/ProductCategoryItems/Pastry';
 import Driver_drawer from './Navigations/DriverNav';
 import Seller_drawer from './Navigations/SellerNav';
+import CustomerParcel from './View/CustomerParcel';
 import { Home_drawer } from './Navigations/HomeNav';
 import Help_center from './AppInfo/Help'
 import About_ from './AppInfo/About';
@@ -333,6 +334,15 @@ export default function App() {
             component={About_}
             options = {{
             title: 'roraca'
+            }}
+            
+          />
+          <Stack.Screen
+            
+            name = 'CustomerParcel'
+            component={CustomerParcel}
+            options = {{
+            title: 'CustomerParcel'
             }}
             
           />

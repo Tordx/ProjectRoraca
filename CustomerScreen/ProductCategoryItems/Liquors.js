@@ -2,6 +2,9 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
 import { FlatList } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setSelectedItem } from '../../Redux/TaskReducer';
 
 export default function Liquors() {
 
@@ -10,6 +13,8 @@ export default function Liquors() {
         // StartsSync()
       }, []);
 
+      const dispatch = useDispatch();
+      const navigation = useNavigation(); 
     const [itemdata,setItemdata] = useState('')
 
     const getData = async() => {
@@ -33,11 +38,17 @@ export default function Liquors() {
           }
     }  
 }
+            const LiquorsItemView = (item) => {
+                console.log(item)
+                console.log('item')
+                dispatch(setSelectedItem(item))
+                navigation.navigate('ProductContainer')
+            }
 
         const renderItem = ({ item }) => {
                     
             return(
-             <TouchableOpacity>
+                <TouchableOpacity onPress={() => LiquorsItemView(item)}>
                 <View style={styles.item}>
                 <Image 
                 style={{width:195 , height:230}}

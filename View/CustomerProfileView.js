@@ -1,5 +1,5 @@
 
-import React, {useState} from 'react';
+import React, {useState ,useEffect} from 'react';
 import {
 
   View,
@@ -12,50 +12,70 @@ import {
   ScrollView,
   FlatList,
   Alert,
+  TouchableOpacity
 
 } from 'react-native';
 import { sub } from 'react-native-reanimated';
-
-  const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'Customer Profile',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: 'KYLE Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: 'Third Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d74',
-      title: 'Fourth Item',
-    },
-
-];
-
-
-const Item = ({ title }) => (
-  <View style={styles.item}>
-    <Text style={styles.title}>{title}</Text>
-  </View>
-);
+import CustomerParcel from './CustomerParcel';
+import { useNavigation } from '@react-navigation/native';
+import { useSelector } from 'react-redux';
 
 
 export function Profile_view(){
 
+useEffect(() => {
+  DriverHistoryData()
+  // StartsSync()
+}, []);
+
+const [newdata , setNewdata] = useState('')
+const orderItems = useSelector(state => state.items.orderItems);
 const [submitted, setsubmitted] = useState();
+const navigation = useNavigation(); 
+
+const DriverHistoryData = () => {
+  let filteredData = orderItems.filter(item => {
+    return item.doc.Individual === 'OK';
+  });
+  setNewdata(filteredData)
+  console.log(filteredData)
+  console.log('filteredData')
+}
+
 
 const _walletbalance = () => {
     Alert.alert('No payment linked', 'link your choice of payment first');
   
 };
 
-  const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
+const Parcel = () => {
+  navigation.navigate('CustomerParcel')
+}
+
+const renderItem = ({ item }) => (
+  <View style ={{flexDirection: 'row' }}>
+    <Image 
+       style={{width:80 , height:80}}
+       resizeMode="contain"
+        source={{uri: item.doc.Image}}
+        />
+  <TouchableOpacity>
+   <View  style={{margin: 20}}>
+      <Text style={styles.titles}>
+      {item.doc._id}
+     </Text>
+  </View>
+  </TouchableOpacity>
+  <TouchableOpacity>
+  <View style={{margin: 20}} >
+      <Text style={styles.titles}>
+      {item.doc.Individual}
+     </Text>
+  </View>
+  </TouchableOpacity>
+
+ </View>
+    );
 
   return (
 
@@ -126,6 +146,11 @@ const _walletbalance = () => {
             <Pressable style = {styles.fundbutton2}>
             <Text style = {styles.buttontext}> ADD FUNDS </Text>
             </Pressable>
+            <Pressable style = {styles.fundbutton2}
+            onPress={Parcel}
+            >
+            <Text style = {styles.buttontext}> PARCEL </Text>
+            </Pressable>
           </View>
 
           <View style = {styles.cellbox}>
@@ -154,15 +179,14 @@ const _walletbalance = () => {
         <Pressable  >
           <Text style = {{ color: '#ffa45e', fontStyle: 'italic',}}> Transaction History </Text>
         </Pressable>
-      <ScrollView style = {{backgroundColor: '#fff122', width: 475,}} >
-        <FlatList
-        
-        
-        data={DATA}
-        renderItem={renderItem}
-        keyExtractor={item => item.id}
-
-        />
+      <ScrollView style = {{backgroundColor: '#e2e2e2', width: 475,}} >
+      <View style={styles.container}>
+            <FlatList
+            data={newdata}
+            renderItem={renderItem}
+            keyExtractor={item => String(item.doc._id)}
+    />
+        </View>
       </ScrollView>
       </View>
   )
@@ -188,13 +212,13 @@ const _walletbalance = () => {
       alignItems: 'center',
       textAlign: 'center',
       fontWeight: '900',
-      fontSize: 18,
+      fontSize: 15,
 
     },
 
     fundbutton2: {
 
-      width: 175,
+      width: 120,
       height: 45,
       backgroundColor: '#222255',
       borderRadius: 10,
@@ -206,7 +230,7 @@ const _walletbalance = () => {
 
     fundbutton1: {
 
-      width: 175,
+      width: 120,
       height: 45,
       backgroundColor: '#ec4176',
       borderRadius: 10,
@@ -291,7 +315,15 @@ const _walletbalance = () => {
       alignItems: 'center',
       backgroundColor: '#e2e2e2'
 
-    }
+    },
+    container: {
+      justifyContent: 'center',
+      alignItems: 'center',
+      
+  },
+        titles: {
+          fontSize: 32,
+        },
 
 
 
