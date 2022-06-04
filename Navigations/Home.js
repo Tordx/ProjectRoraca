@@ -12,15 +12,20 @@ import {
   Text,
 
 } from 'react-native';
-import Divider from 'react-native-divider';
-import Product_Category from '../CustomerScreen/ProductCategory';
-import ProductAd from '../Components/StoreAd';
+import {Divider} from 'react-native-paper';
 import Image_slider from '../Components/ImageSlider';
 import Individual_parcel from '../Components/IndividualParcel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
-
+import MainCategory from '../Category/Category';
+import LinearGradient from 'react-native-linear-gradient';
+import {Flight_category} from '../Category/FlightCategory';
+import Food_category from '../Category/FoodCategory';
+import {Flight_home} from '../Category/FlightCategory_/FlightHome'
+import { Food_Home } from '../Category/FoodCategory/FoodHome';
+import roracaads from '../Images/roracaads.png';
  function Default_Screen ({navigation}) {
+
 
   const Login = () => {
 
@@ -33,38 +38,52 @@ import { useNavigation } from '@react-navigation/native';
     <View style = {styles.body}>
 
       
-        <ScrollView style = {{backgroundColor: '#e2e2e2'}}>
-          <View  style = {styles.body} >
+        <ScrollView 
+        showsVerticalScrollIndicator = {false}
+        overScrollMode = 'always'
+        style = {{backgroundColor: '#e2e2e2'}}>
+          <View  style = {styles.body2} >
             <Image_slider/>
-
-            {/* <Image
-                  style = {{height: 100, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
-                  source = {{uri: 'https://i.imgur.com/8IkDdx0.png'}}
-            /> */}
                 
             <Divider/>
+            
             <Individual_parcel/>
-            <Product_Category
+            <View style = {{padding: 0, marginTop: 30, marginBottom: 20,}}>
+            <MainCategory/>
+            </View>
+
+            <View style = {{padding: 0, marginTop: 30, marginBottom: 20,}}>
+            <Image
+
+              source = {roracaads}
+              resizeMode = "cover"
+              style = {{width: 380, height: 200,  alignSelf: 'center', borderRadius: 10,}}
+
             />
+            </View>
+
             <Divider/>
           </View>
-
-            <Image
-                  style = {{height: 150, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
-                  source = {{uri: 'https://scontent.fcrk4-1.fna.fbcdn.net/v/t1.6435-9/87185544_903521310080816_3768760250925056000_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=2c4854&_nc_eui2=AeH33v83fOcWZXfgOUupcPiAlEvD4XdzqreUS8Phd3Oqt5xUnCLXLheRG2D_7OzrwglIbU_CZQccixU5tZv-ubsy&_nc_ohc=oxbjui3VDRoAX9PiMJe&_nc_ht=scontent.fcrk4-1.fna&oh=00_AT9kWtyAB_1PtiXjfvrhlIYm0g3axjbsah8HmpGfemxvfg&oe=62B108CD'}}
-                />
-                <Image
-                  style = {{height: 150, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
-                  source = {{uri: 'https://scontent.fcrk4-1.fna.fbcdn.net/v/t1.6435-9/87185544_903521310080816_3768760250925056000_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=2c4854&_nc_eui2=AeH33v83fOcWZXfgOUupcPiAlEvD4XdzqreUS8Phd3Oqt5xUnCLXLheRG2D_7OzrwglIbU_CZQccixU5tZv-ubsy&_nc_ohc=oxbjui3VDRoAX9PiMJe&_nc_ht=scontent.fcrk4-1.fna&oh=00_AT9kWtyAB_1PtiXjfvrhlIYm0g3axjbsah8HmpGfemxvfg&oe=62B108CD'}}
-                />
-                <Image
-                  style = {{height: 150, width: 380, alignSelf: 'center', margin: 5, borderRadius: 20,}}
-                  source = {{uri: 'https://scontent.fcrk4-1.fna.fbcdn.net/v/t1.6435-9/87185544_903521310080816_3768760250925056000_n.jpg?_nc_cat=102&ccb=1-7&_nc_sid=2c4854&_nc_eui2=AeH33v83fOcWZXfgOUupcPiAlEvD4XdzqreUS8Phd3Oqt5xUnCLXLheRG2D_7OzrwglIbU_CZQccixU5tZv-ubsy&_nc_ohc=oxbjui3VDRoAX9PiMJe&_nc_ht=scontent.fcrk4-1.fna&oh=00_AT9kWtyAB_1PtiXjfvrhlIYm0g3axjbsah8HmpGfemxvfg&oe=62B108CD'}}
-                />
+              <View style = {{marginTop: 20,}}>
+               <Flight_category/>
+               <Flight_home/>
+               <Divider/>
+               <Food_category/>
+               <Food_Home/>
+               <Divider/>
+              </View>
+              <View  style = {{paddingTop: 250,}}>
+              </View>
+                
                 
         </ScrollView>
-    
-        <View style = {{ 
+
+        
+        <LinearGradient
+                    colors={['#225', 'transparent' ,'transparent']}
+                    style={styles.linearGradient2}
+        >
+        <View style = {{
                     alignSelf: 'center',
                     elevation: 5,
                     flexDirection: 'row',
@@ -76,7 +95,7 @@ import { useNavigation } from '@react-navigation/native';
                     position: 'absolute',
                     top: 0,
                     }}>
-
+                    
                     <View style = {{
                         alignContent: 'center',
                         justifyContent: 'center',
@@ -93,12 +112,20 @@ import { useNavigation } from '@react-navigation/native';
                             placeholder='Search our foodlane'
                 />
           </View>
+          </LinearGradient> 
+          <LinearGradient
+                    colors={['transparent' ,'#e2e2e2', ]}
+                    style={styles.linearGradient}
+          >
           <View
             style = {{ 
             alignSelf: 'center',
             position: 'absolute',
             bottom: 100,
+            elevation: 5,
             }}>
+
+          
             <Pressable
             onPress = {Login}>
               <Text 
@@ -106,30 +133,62 @@ import { useNavigation } from '@react-navigation/native';
                 alignSelf: 'center',
                 color: '#141414',
                 fontWeight: '600',
-                fontStyle: 'italic'
-                
+                fontStyle: 'italic',
+                fontSize: 15,
             
                 }}>
                 Login or Create Account
               </Text>
             </Pressable>
           </View>
-          
-          <Image
-                  style = {{height: 100, width: 250, alignSelf: 'center', margin: 5, borderRadius: 20, 
-                  position: 'absolute',
-                  bottom: 0,}}
-                  source = {{uri: 'https://i.imgur.com/4GH79fj.png'}}
-                />
-                
+            <Text style = {{
+
+              fontFamily: 'bauhaus93',
+              fontSize: 95, 
+              textAlign: 'center', 
+              margin: 5, 
+              borderRadius: 20, 
+              color: '#ffa45e',
+              
+            bottom: 0,
+            position: 'absolute', 
+              }}>ror<Text style  = {{color: '#225'}}>aca</Text>
+            </Text>
+        </LinearGradient>
     </View>
   )
   }
 const styles = StyleSheet.create({
 
-  
+  linearGradient2: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 200,
+    width: 411,
+    position: 'absolute',
+    top: 0,
+    padding: 0,
+  },
+
+  linearGradient: {
+    alignItems: 'center',
+    justifyContent: 'center',
+    height: 200,
+    width: 420,
+    flexDirection: 'row',
+    position: 'absolute',
+    bottom: 0,
+  },
   
   body: {
+
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#e2e2e2',
+    flex: 1,
+  },
+
+  body2: {
 
     justifyContent: 'center',
     alignContent: 'center',

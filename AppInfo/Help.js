@@ -11,8 +11,18 @@ import {Divider, Text} from 'react-native-paper';
 import FontAwesome from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 import PlaceOrder from './Textfiles/_placeorder';
-
-
+import SendPackage from './Textfiles/_sendpackage';
+import TrackOrder from './Textfiles/_trackorders';
+import ReportUsers from './Textfiles/_reportusers'
+import PaymentOptions from './Textfiles/_paymentoptions';
+import ListItem from './Textfiles/_listitems';
+import SendOrders from './Textfiles/_sendorders';
+import ManageOrders from './Textfiles/_manageorders';
+import Withdraw from './Textfiles/_withdraw';
+import GetDeliveries from './Textfiles/_getdeliveries';
+import Requirements from './Textfiles/_requirements';
+import Tracklocation from './Textfiles/_getdeliveries';
+import Rates from './Textfiles/_rates';
 const Help_center = () => {
 
     const navigation = useNavigation();
@@ -31,7 +41,14 @@ const Help_center = () => {
             </View>
         
             <Divider/>
-            <View style = {styles.helpbox} >
+
+            <TouchableOpacity
+            style = {{alignSelf: 'center', margin: 20,}}
+            onPress={() => navigation.navigate('Careers')}
+            >
+                <Text> CAREERS</Text>
+            </TouchableOpacity>
+
                 <View style = {styles.faqbox}>
                 <FontAwesome
                 
@@ -70,7 +87,6 @@ const Help_center = () => {
                     <Text style = {styles.helpboxtext}> Notifications
                     </Text>
                 </TouchableOpacity>
-            </View>
             
             <Divider/>
 
@@ -83,8 +99,6 @@ const Help_center = () => {
                 color: '#808080',
                 margin: 10,
             }}> Frequently Asked Questions </Text>
-
-            <View style = {styles.helpbox} >
                 <View style = {styles.faqbox}>
                 <FontAwesome
                 
@@ -103,27 +117,11 @@ const Help_center = () => {
                     }}> Customers
                     </Text>
                 </View>
-                <PlaceOrder
-                />
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> send package
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Track orders/package
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Report users
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Payment options
-                    </Text>
-                </TouchableOpacity>
-            </View>
-
-            <View style = {styles.helpbox} >
+                <PlaceOrder/>
+                <SendPackage/>
+                <TrackOrder/>
+                <ReportUsers/>
+                <PaymentOptions/>
                 <View style = {styles.faqbox}>
                 <FontAwesome
                 
@@ -142,29 +140,12 @@ const Help_center = () => {
                     }}> Seller
                     </Text>
                 </View>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> List Item
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Send Orders
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Manage orders
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Report users
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Withdraw 
-                    </Text>
-                </TouchableOpacity>
-            </View>
+                <ListItem/>
+                <SendOrders/>
+                <ManageOrders/>
+                <ReportUsers/>
+                <Withdraw/>
 
-            <View style = {styles.helpbox} >
                 <View style = {styles.faqbox}>
                 <FontAwesome
                 
@@ -183,27 +164,11 @@ const Help_center = () => {
                     }}> Delivery Rider
                     </Text>
                 </View>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Get deliveries
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Requirements
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Track Customers
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Rates
-                    </Text>
-                </TouchableOpacity>
-                <TouchableOpacity>
-                    <Text style = {styles.helpboxtext}> Withdraw 
-                    </Text>
-                </TouchableOpacity>
-            </View>
+                <GetDeliveries/>
+                <Requirements/>
+                <Tracklocation/>
+                <Rates/>
+                <Withdraw/>
 
                 
             <View style = {{flexDirection: 'row', margin: 10, alignItems: 'flex-start', justifyContent: 'flex-start'}}>
@@ -287,7 +252,6 @@ const styles = StyleSheet.create({
         margin: 20,
         alignItems: 'center',
         justifyContent: 'center',
-        elevation: 5,
 
     },
 

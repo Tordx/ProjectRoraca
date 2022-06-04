@@ -1,7 +1,7 @@
-import { StyleSheet, Text, View, Image,TouchableOpacity } from 'react-native'
+import { StyleSheet, Text, View, Image,TouchableOpacity, SafeAreaView, FlatList } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
-import { FlatList } from 'react-native-gesture-handler';
+import {  } from 'react-native-gesture-handler';
 
 export default function Drinks() {
     useEffect(() => {
@@ -37,22 +37,26 @@ export default function Drinks() {
             
             return(
             <TouchableOpacity>
-              <View style={styles.item}>
+              <View style = {styles.itemcontainer}>
+                <View style={styles.item}>
                 <Image 
-                style={{width:195 , height:230}}
-                resizeMode="cover"
+                style={{width: 180, height: 250, borderRadius: 20, alignSelf: 'center' }}
+                resizeMode = 'cover'
                 source={{uri: item.Image}}
                 />
-                <Text style={styles.title}>
+                
+              
+               </View>
+               <Text style={styles.title}>
                     {item._id}
                 </Text>
-               </View>
+                </View>
             </TouchableOpacity>
             )
         }
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
             <FlatList
             numColumns = {2}
             data={itemdata}
@@ -60,37 +64,42 @@ export default function Drinks() {
             keyExtractor={item => item}
             >       
             </FlatList>
-        </View>
+        </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
 
-    text: {
+    itemcontainer: {
 
-        margin: 5,
-        fontSize: 15,
-
-    },
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    },
-    item: {
-        backgroundColor: '#fff',
-            width: 195,
-            height: 250,
-            borderRadius: 10,
-            margin: 5,
+      margin: 5,
+      width: 180,
+      height: 290, 
+      backgroundColor: '#e2e2e2', 
+      borderRadius: 20,  
+      alignContent: 'center'
     
+    },
+
+   
+    item: {
+
+      borderRadius: 20,
+    
+    },
+
+    title: {
+
+      fontSize: 20,
+      color: '#222',
+      textAlign: 'center',
+      alignSelf: 'center'
       },
-      title: {
-        width: 100,
-        height: 100,
-        fontSize: 20,
-        position: 'absolute',
-        textAlign: 'center',
-        alignSelf: 'center',
-        color: '#222'
-      },
+
+      
+    container: {
+
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
 })

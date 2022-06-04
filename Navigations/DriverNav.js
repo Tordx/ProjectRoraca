@@ -1,10 +1,5 @@
 import React from 'react';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs'
-import { Item_view } from '../View/DriverItemView'
-import { Driver_chat } from '../View/DriverChatView';
-import { Driver_profile } from '../View/DriverProfileView';
 import Help_center from '../AppInfo/Help';
-import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import { useNavigation } from '@react-navigation/native';
 import { 
 
@@ -14,42 +9,14 @@ import {
     DrawerItemList
   
   } from '@react-navigation/drawer';
-  import Driver_Tab from './DriverTab';
+import Driver_Tab from './DriverTab';
+import Rates_ from '../AppInfo/Rates';
+import Tracking_ from '../AppInfo/Tracking';
+import Drawer_Contents from './DrawerContents';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Drawer = createDrawerNavigator();
 
-function Version(props) {
-    return (
-      <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
-        <View style   ={{height: 500, AlignItems: 'center'}}>
-            <Text style = {{textAlign: 'center'}}>
-                 1.0.01
-            </Text>
-            <Text style = {{textAlign: 'center'}}>
-                © 2021 roraca
-            </Text>
-            <Text style = {{textAlign: 'center'}}>
-                all rights reserved
-            </Text>
-        </View>
-      </DrawerContentScrollView>
-    );
-  }
-
-function Logout1(props) {
-
-    const navigation = useNavigation();
-  
-    return (
-      <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
-        <DrawerItem label="Logout" onPress={() => navigation.navigate('Home')}
-         />
-        
-      </DrawerContentScrollView>
-    );
-  }
 
 function Driver_drawer () {
 
@@ -58,7 +25,8 @@ function Driver_drawer () {
         <Drawer.Navigator
         
         initialRouteName='DriverTab'
-        drawerContent={props => <Logout1 {...props} />}
+        drawerContent={props => <Drawer_Contents {...props} />}
+        screenOptions={{drawerLabelStyle: {marginLeft: -20}}}
         >
         
             
@@ -71,7 +39,15 @@ function Driver_drawer () {
                 title: 'Account',
                 drawerActiveBackgroundColor: '#225',
                 drawerActiveTintColor: '#e2e2e2',
-                drawerIcon: () => null,
+                drawerIcon: ({color}) => (
+                  <FontAwesome5
+                  
+                    name='motorcycle'
+                    size={20}
+                    color = {color}
+
+                  />
+                ),
                 headerShown: false,
 
                 }}
@@ -85,8 +61,61 @@ function Driver_drawer () {
                     headerShown: false,  
                     drawerActiveBackgroundColor: '#225',
                     drawerActiveTintColor: '#e2e2e2',
+                    drawerIcon: ({color}) => (
+                      <FontAwesome5
+                      
+                        name='question-circle'
+                        size={20}
+                        color = {color}
+
+                      />
+                    ),
                   }}
     
+            />
+
+            <Drawer.Screen
+        
+            name = 'Rates_'
+            component={Rates_}
+                options={{  
+                    title: 'Rates',
+                    drawerActiveBackgroundColor: '#225',
+                    drawerActiveTintColor: '#e2e2e2',
+                    headerShown: true,
+                    drawerIcon: ({color}) => (
+                      <FontAwesome5
+                      
+                        name='percentage'
+                        size={20}
+                        color = {color}
+
+                      />
+                    ),
+                }}
+
+
+            />
+
+            <Drawer.Screen
+            
+            name = 'Tracking'
+            component={Tracking_}
+                  options={{  
+                    headerShown: false,  
+                    drawerActiveBackgroundColor: '#225',
+                    drawerActiveTintColor: '#e2e2e2',
+                    title: 'Tracking',
+                    drawerIcon: ({color}) => (
+                      <FontAwesome5
+                      
+                        name='map-marked-alt'
+                        size={20}
+                        color = {color}
+
+                      />
+                    ),
+                  }}
             />
             
         </Drawer.Navigator>

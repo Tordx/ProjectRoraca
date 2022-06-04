@@ -1,15 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { 
-    View, 
+
     StyleSheet,
-    Pressable,
     Image,
+    SafeAreaView
+
 } from 'react-native';
 
-import roraca from '../Images/0rI72pu.png';
-import abbastea from '../Images/8IkDdx0.png';
-import jolibee from '../Images/127044_original.jpg';
-const images  = [roraca, abbastea, jolibee];
+import ctyapp from '../Images/ctyapp.png';
+import emirates from '../Images/emirates.png';
+import lecoucou from '../Images/lecoucou.png';
+import TMHSPA from '../Images/TMHSPA.png'
+
+const images  = [ctyapp, emirates, lecoucou, TMHSPA];
 
 const Image_slider = () => {
 
@@ -18,27 +21,19 @@ const Image_slider = () => {
     useEffect(() => {
         const intervalId = setInterval(() => {
             setCurrentImage(images[Math.floor(Math.random() * images.length)]);
-        }, 3000)
+        }, 2500)
         
         return () => clearInterval(intervalId);
     }, [])
     
     return (
-       
-        <Image
-                  style = {{height: 220, width: 425, alignSelf: 'center', borderRadius: 10,}}
+        <SafeAreaView>
+            <Image
+                  style = {{height: 220, width: '100%', alignSelf: 'center'}}
+                  resizeMode='cover'
                   source = {currentImage}
             />
+        </SafeAreaView>
     );
-};
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#2c3e50',
-    },
-});
-
-//make this component available to the app
+}
 export default Image_slider;

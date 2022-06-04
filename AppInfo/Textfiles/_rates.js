@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const PlaceOrder = () => {
+const Rates = () => {
 
     const [showplaceorder, setshowplaceorder] = useState(false);
 
@@ -22,7 +22,7 @@ const PlaceOrder = () => {
             <TouchableOpacity
              style = {{flexDirection: 'row'}}
             onPress={() => setshowplaceorder(!showplaceorder)}>
-                <Text style = {styles.container}>Place Order</Text>
+                <Text style = {styles.container}>Rates</Text>
             { showplaceorder ?
             <View style = {{justifyContent: 'center'}}> 
                 <FontAwesome5
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
 }
 );
 
-export default PlaceOrder;
+export default Rates;

@@ -15,6 +15,7 @@ import {
   
   } from '@react-navigation/drawer';
   import { useNavigation } from '@react-navigation/native';
+import Driver_notification from '../View/DriverNotification';
 
 const Driver = createBottomTabNavigator();
 
@@ -27,17 +28,21 @@ const Driver_Tab = () => {
             tabBarIcon:({focused, size, color}) => {
               let iconName;
                 if(route.name==='DriverItemView'){
-                  iconName = 'box';
+                  iconName = 'box-open';
                   size = focused ? 23 : 20;
                   color = focused ? '#ffa45e': '#555'; 
   
                 } else if (route.name === 'DriverChatView') {
-                  iconName = 'inbox';
+                  iconName = 'envelope-open-text';
                   size = focused ? 23 : 20;
                   color = focused ? '#ffa45e': '#555';
   
                 } else if (route.name === 'DriverProfileView') {
                     iconName = 'user-alt';
+                    size = focused ? 23 : 20;
+                    color = focused ? '#ffa45e': '#555';
+                } else if (route.name === 'DriverNotification') {
+                    iconName = 'concierge-bell';
                     size = focused ? 23 : 20;
                     color = focused ? '#ffa45e': '#555';
                 }
@@ -84,6 +89,20 @@ const Driver_Tab = () => {
                 }}
 
             />
+
+            <Driver.Screen
+  
+                name = 'DriverNotification'
+                component={Driver_notification}
+                options={{
+                headerTintColor: '#808080',
+                headerStyle: {
+                 backgroundColor: '#e2e2e2' }
+            }} 
+
+
+            />
+
             <Driver.Screen
             
                 name= 'DriverProfileView'
@@ -93,7 +112,9 @@ const Driver_Tab = () => {
                     headerTintColor: '#808080',
                 }}
 
-          />
+            />
+
+            
 
 
         

@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-const PlaceOrder = () => {
+const Requirements = () => {
 
     const [showplaceorder, setshowplaceorder] = useState(false);
 
@@ -18,11 +18,11 @@ const PlaceOrder = () => {
     return (
        
         <View style = {{alignContent: 'center', justifyContent: 'center'}}>
-        
+            
             <TouchableOpacity
              style = {{flexDirection: 'row'}}
             onPress={() => setshowplaceorder(!showplaceorder)}>
-                <Text style = {styles.container}>Place Order</Text>
+                <Text style = {styles.container}>Requirements</Text>
             { showplaceorder ?
             <View style = {{justifyContent: 'center'}}> 
                 <FontAwesome5
@@ -39,11 +39,11 @@ const PlaceOrder = () => {
                 size={25}
                 color = '#141414'
                 style={{}} /></View>
-            }
+            }   
             </TouchableOpacity>
 
             {
-                showplaceorder? <Text style  = {{margin: 10}}> Add your orders in your cart and tap on the cart button, then settle your payment with the merchant with your own way of payment, next thing you need to do is wait for your order! </Text> : null
+                showplaceorder? <Text style  = {{margin: 10}}>Error 404: text info not finished</Text> : null
             }
         </View> 
     );
@@ -96,4 +96,4 @@ const styles = StyleSheet.create({
 }
 );
 
-export default PlaceOrder;
+export default Requirements;

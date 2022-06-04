@@ -9,7 +9,7 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-export default function Product_Category() {
+export default function Food() {
 
   const navigation = useNavigation(); 
 
@@ -43,8 +43,8 @@ export default function Product_Category() {
 
   return (
 
-      <View style = {{alignItems: 'center'}}>
-      <View style ={{flexDirection: 'row',}} >
+      <View style = {{alignItems: 'center', backgroundColor: '#e2e2e2', flex: 1}}>
+      <View style ={{flexDirection: 'row', margin: 20}} >
       <View style = {{alignItems: 'center'}} >
         <Pressable style = {styles._cell1}
         onPress={Liquors}
@@ -116,7 +116,7 @@ export default function Product_Category() {
       </View>
 
   <View style = {{alignContent: 'center'}}>
-      <View style ={{flexDirection: 'row',}} >
+      <View style ={{flexDirection: 'row', marginBottom: 20,}} >
       <View style = {{alignContent: 'center'}} >
         <Pressable style = {styles._cell1} 
         onPress={Drinks}

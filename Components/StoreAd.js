@@ -14,8 +14,9 @@ const Store_Ad = () => {
   const navigation = useNavigation();
 
   return (
-    <View>
+    <View style = {styles.container}>
 
+       
         
       <Pressable style={styles.Product}
        onPress={() => {
@@ -38,21 +39,29 @@ const Store_Ad = () => {
 };
 
 const styles = StyleSheet.create({
-  Product: {
-    width: 375,
-    height: 175,
-    borderRadius: 20,
-    backgroundColor: '',
-    marginTop: 10,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 2,
-      height: 2,
-    },
-    shadowOpacity: 1,
-    shadowRadius: 6.27,
 
-    elevation: 9,
+    container: {
+
+      alignSelf: 'center',
+
+    },
+
+    Product: {
+
+      width: 375,
+      height: 175,
+      borderRadius: 20,
+      backgroundColor: '',
+      marginTop: 10,
+      shadowColor: '#000',
+      shadowOffset: {
+        width: 2,
+        height: 2,
+      },
+      shadowOpacity: 1,
+      shadowRadius: 6.27,
+
+      elevation: 9,
   },
 });
 

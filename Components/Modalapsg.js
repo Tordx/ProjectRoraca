@@ -98,8 +98,7 @@ export const Modal_apsg = ({navigation}) => {
             }
             setUploading(false);
             Alert.alert(
-              'Photo uploaded!',
-              'Your photo has been uploaded to Firebase Cloud Storage!'
+              'Successfully added Photo!'
             );  
             setImage(null);
             const url = await storage().ref(filename).getDownloadURL();
@@ -140,7 +139,6 @@ export const Modal_apsg = ({navigation}) => {
             </Modal>
             <Divider/>
             <ImageBackground
-            // source={{uri: image}}
             style = {{height: 300, width: 400, justifyContent: 'center', alignSelf: 'center'}}
             imagestyle = {{borderRadius: 10,}}
             resize = 'cover'>

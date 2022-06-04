@@ -16,6 +16,7 @@ import {
   
   } from '@react-navigation/drawer';
   import { useNavigation } from '@react-navigation/native';
+import Seller_notification from '../View/SellerNotification';
 const Seller = createBottomTabNavigator();
 
 const Seller_Tab = () => {
@@ -35,12 +36,16 @@ const Seller_Tab = () => {
                   color = focused ? '#ffa45e': '#555'; 
   
                 } else if (route.name === 'SellerChatView') {
-                  iconName = 'inbox';
+                  iconName = 'envelope-open-text';
                   size = focused ? 23 : 20;
                   color = focused ? '#ffa45e': '#555';
   
                 } else if (route.name === 'SellerProfileView') {
                     iconName = 'user-alt';
+                    size = focused ? 23 : 20;
+                    color = focused ? '#ffa45e': '#555';
+                } else if (route.name === 'SellerNotification') {
+                    iconName = 'concierge-bell';
                     size = focused ? 23 : 20;
                     color = focused ? '#ffa45e': '#555';
                 }
@@ -81,15 +86,26 @@ const Seller_Tab = () => {
                 }}
 
             />
+
             <Seller.Screen
-                name = 'SellerProfileView'
-                component={Seller_Profile}
+                name = 'SellerNotification'
+                component={Seller_notification}
                 options = {{
-                    title: 'Profile',
+                    title: 'Notifications',
                     headerTintColor: '#808080',
                 }}
             
             />
+
+            <Seller.Screen
+                name = 'SellerProfileView'
+                component={Seller_Profile}
+                options = {{
+                    headerShown: false, 
+                    headerTintColor: '#808080',
+                }}
+            
+            />  
 
             
         </Seller.Navigator>

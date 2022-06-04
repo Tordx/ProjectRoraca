@@ -7,6 +7,7 @@ import { Product_view } from '../View/CustomerProductView';
 import { Chat_view } from '../View/CustomerChatView';
 import { Profile_view } from '../View/CustomerProfileView';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import Customer_notification from '../View/CustomerNotification';
 
 const Customer = createBottomTabNavigator();
 
@@ -20,12 +21,17 @@ function Customer_Tab () {
           tabBarIcon:({focused, size, color}) => {
             let iconName;
               if(route.name==='FoodLane'){
-                iconName = 'store';
+                iconName = 'store-alt';
                 size = focused ? 23 : 20;
                 color = focused ? '#ffa45e': '#555'; 
 
               } else if (route.name === 'Chat') {
-                iconName = 'inbox';
+                iconName = 'envelope-open-text';
+                size = focused ? 23 : 20;
+                color = focused ? '#ffa45e': '#555';
+
+              } else if (route.name === 'CustomerNotification') {
+                iconName = 'concierge-bell';
                 size = focused ? 23 : 20;
                 color = focused ? '#ffa45e': '#555';
 
@@ -35,6 +41,8 @@ function Customer_Tab () {
                 color = focused ? '#ffa45e': '#555';
 
               }
+
+              
 
                 return(
                   <FontAwesome5
@@ -63,9 +71,8 @@ function Customer_Tab () {
           name = 'FoodLane'
           component={Product_view}
           options={{
-            headerTintColor: '#808080',
-            headerStyle: {
-              backgroundColor: '#e2e2e2' }
+            
+            headerShown: false,
          
           }} 
         />
@@ -81,6 +88,20 @@ function Customer_Tab () {
 
 
         />
+
+          <Customer.Screen
+  
+          name = 'CustomerNotification'
+          component={Customer_notification}
+          options={{
+            headerTintColor: '#808080',
+            headerStyle: {
+              backgroundColor: '#e2e2e2' }
+          }} 
+
+
+        />
+
         <Customer.Screen
   
           name = 'Profile'
@@ -92,6 +113,8 @@ function Customer_Tab () {
           }} 
 
         />
+
+        
 
 
       </Customer.Navigator>

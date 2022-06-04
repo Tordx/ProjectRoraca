@@ -12,23 +12,12 @@ import {
     DrawerItemList
   
   } from '@react-navigation/drawer';
-  import { useNavigation } from '@react-navigation/native';
 import Seller_Tab from './SellerTab';
+import Tracking_ from '../AppInfo/Tracking';
+import Drawer_Contents from './DrawerContents';
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
 const Drawer = createDrawerNavigator();
-
-function Logout1(props) {
-
-    const navigation = useNavigation();
-  
-    return (
-      <DrawerContentScrollView {...props}>
-        <DrawerItemList {...props} />
-        <DrawerItem label="Logout" onPress={() => navigation.navigate('Home')} />
-        
-      </DrawerContentScrollView>
-    );
-  };
 
 
 function Seller_drawer () {
@@ -38,7 +27,8 @@ function Seller_drawer () {
 
             <Drawer.Navigator
             initialRouteName='SellerTab'
-            drawerContent={props => <Logout1 {...props} />}
+            drawerContent={props => <Drawer_Contents {...props} />}
+            screenOptions={{drawerLabelStyle: {marginLeft: -20}}}
             >
 
                 <Drawer.Screen
@@ -49,14 +39,56 @@ function Seller_drawer () {
                     title: 'Account',
                     drawerActiveBackgroundColor: '#225',
                     drawerActiveTintColor: '#e2e2e2',
-                    drawerIcon: () => null,
                     headerShown: false,
+                    drawerIcon: ({color}) => (
+                      <FontAwesome5
+                      
+                        name='home'
+                        size={20}
+                        color = {color}
+
+                      />
+                    ),
                     }}
                 />
 
                 <Drawer.Screen
                 name='Help'
                 component={Help_center}
+                options = {{
+                  drawerActiveBackgroundColor: '#225',
+                  drawerActiveTintColor: '#e2e2e2',
+                  title: 'Help Center',
+                  drawerIcon: ({color}) => (
+                    <FontAwesome5
+                    
+                      name='question-circle'
+                      size={20}
+                      color = {color}
+
+                    />
+                  ),
+                }}
+                />
+
+                <Drawer.Screen
+            
+                name = 'Tracking'
+                component={Tracking_}
+                  options={{ 
+                    drawerActiveBackgroundColor: '#225',
+                    drawerActiveTintColor: '#e2e2e2',
+                    title: 'Tracking',
+                    drawerIcon: ({color}) => (
+                      <FontAwesome5
+                      
+                        name='map-marked-alt'
+                        size={20}
+                        color = {color}
+
+                      />
+                    ),
+                }}
                 />
 
             
