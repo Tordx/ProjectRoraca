@@ -145,7 +145,7 @@ const options = {
       }
       </View>
       
-      <View style ={{flexDirection: 'row', bottom: -10, position: 'absolute', bottom: 0,}} >
+      <View style ={{flexDirection: 'row',position: 'absolute', bottom: 55,}} >
             <TouchableHighlight style = {styles.TH}
             onPress={()=> showhistory(true)}
             >

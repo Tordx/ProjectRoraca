@@ -1,5 +1,5 @@
 
-import React, { Component } from 'react';
+import React, { Component, useState , useEffect } from 'react';
 import { 
 
   View, 
@@ -7,64 +7,72 @@ import {
   StyleSheet,
   FlatList,
   SafeAreaView,
-  StatusBar
+  StatusBar,
+  TouchableOpacity,
+  Image
 
 } from 'react-native';
-
-const DATA = [
-    {
-      id: 'bd7acbea-c1b1-46c2-aed5-3ad53abb28ba',
-      title: 'C123123ler',
-    },
-    {
-      id: '3ac68afc-c605-48d3-a4f8-fbd91aa97f63',
-      title: '123123123 Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d72',
-      title: '516123 Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d74',
-      title: '234236237 Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d75',
-      title: 'Fifth 234234167   ',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d76',
-      title: 'Sixth Item',
-    },
-    
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d77',
-      title: 'seventh Item',
-    },
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d78',
-      title: 'Sixth Item',
-    },
-    
-    {
-      id: '58694a0f-3da1-471f-bd96-145571e29d79',
-      title: 'seventh Item',
-    },
-  ];
-  
-  const Item = ({ title }) => (
-    <View style={styles.item}>
-      <Text style={styles.title}>{title}</Text>
-    </View>
-  );
-  
+import { remoteDBOrder } from '../database/pouchDb';
+import { useSelector } from 'react-redux';
 
 
 export const Seller_parcel = () => {
 
+  useEffect(() => {
+    DriverDataofSeller()
+    // StartsSync()
+  }, []);
+
+  const [newdata , setNewdata] = useState('')
+  const orderItems = useSelector(state => state.items.orderItems);
+
+  const DoneDriver = async(item) => {
+    remoteDBOrder.get(item.doc._id).then(function(doc) {
+      return remoteDBOrder.put({
+        ...doc,
+        Status: "OK"
+      });
+    }).then(function(response) {
+      console.log(response)
+      console.log('response')
+    }).catch(function (err) {
+      console.log(err);
+    });
+  }
+
+  const DriverDataofSeller = () => {
+    let filteredData = orderItems.filter(item => {
+      return item.doc.Status === 'Done';
+    });
+    setNewdata(filteredData)
+    console.log(filteredData)
+    console.log('filteredData')
+  }
+
   const renderItem = ({ item }) => (
-    <Item title={item.title} />
-  );
+    <View style ={{flexDirection: 'row' }}>
+      <Image 
+        style={{width:80 , height:80}}
+         resizeMode="contain"
+        source={{uri: item.doc.Image}}
+         />
+    <TouchableOpacity>
+     <View  style={{margin: 20}}>
+        <Text style={styles.title}>
+        {item.doc._id}
+       </Text>
+    </View>
+    </TouchableOpacity>
+    <TouchableOpacity onPress={() => DoneDriver(item)} >
+    <View style={{margin: 20}} >
+        <Text style={styles.title}>
+        {item.doc.Status}
+       </Text>
+    </View>
+    </TouchableOpacity>
+  
+   </View>
+      );
 
 
     return (
@@ -72,7 +80,7 @@ export const Seller_parcel = () => {
 
         <View style={styles.container}>
               <FlatList
-                  data={DATA}
+                  data={newdata}
                   renderItem={renderItem}
                   keyExtractor={item => item.id}
               />
@@ -82,31 +90,14 @@ export const Seller_parcel = () => {
 };
 
 const styles = StyleSheet.create({
-  Safeview: {
-        flex: 1,  
-        backgroundColor: '#e2e2e2'
-      },
-      container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-        // backgroundColor: '#2c3e50',
-    },
-    item: {
-        backgroundColor: '#fff',
-            width: 375,
-            height: 100,
-            borderRadius: 10,
-            margin: 5,
+  container: {
+    justifyContent: 'center',
+    alignItems: 'center',
     
-      },
+},
       title: {
-        fontSize: 15,
-        position: 'absolute',
-        bottom: 20,
-        textAlign: 'center',
-        alignSelf: 'center',
-        color: '#222'
+        fontSize: 32,
       },
-
 });
+
 

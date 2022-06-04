@@ -7,35 +7,31 @@ import {
     Pressable,
     ScrollView,
     TouchableOpacity,
-    Alert,
     
     
 } from 'react-native';
 import {TextInput} from 'react-native-paper'; 
 import { Modal_apsg } from '../Components/Modalapsg';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import {remoteDBItem} from '../database/pouchDb';
+import {remoteDBOrder} from '../database/pouchDb';
 import { useSelector } from 'react-redux';
-import { Picker } from '@react-native-picker/picker';
+import { useNavigation } from '@react-navigation/native';
 
+export default function CustomerParcel(){
 
+    const Images = useSelector(state => state.items.Images);
 
-
- const Add_Product = ({navigation}) => {
-
-  const Images = useSelector(state => state.items.Images);
+    const navigation = useNavigation();
 
     const [productname, setProductname] = useState('');
-    const [description, setDescription] = useState('');
-    const [category, setCategory] = useState('');
-    const [subcategory, setSubcategory] = useState('');
-    const [price, setPrice] = useState('');
-    const [preptime, setPreptime] = useState('');
-    const [deliveryfee, setDeliveryfee] = useState('');
-    const [place, setPlace] = useState('');
-    const [status , setStatus] = useState('')
+     const [description, setDescription] = useState('');
+     const [category, setCategory] = useState('');
+     const [price, setPrice] = useState('');
+     const [preptime, setPreptime] = useState('');
+     const [deliveryfee, setDeliveryfee] = useState('');
+     const [individual , setIndividual] = useState('')
 
-  const setNewItem = async () => {
+    const setNewItem = async () => {
 
         if((productname.length == 0) && (description.length == 0) ) {
           console.log('ilove')
@@ -44,33 +40,26 @@ import { Picker } from '@react-native-picker/picker';
            var NewProductData = {
              _id : productname,
              Description : description,
-             category: category,
-             subcategory : subcategory,
-             place: place,
+             Category : category,
              Price : price,
              Preptime : preptime,
              Deliveryfee : deliveryfee,
-             Status: status,
+             Individual: individual,
              Image: Images
            }
            console.log(Images)
            console.log('Images')
-           remoteDBItem.put(NewProductData)
+           remoteDBOrder.put(NewProductData)
            .then((response) =>{
-             Alert.alert('Your Product has been successfully added!')
              console.log(response)
            })
            .catch(err=>console.log(err))
-           
-           navigation.navigate('SellerProductView');
-           
+           navigation.navigate('CustomerNav');
          } catch (error) {
           console.log(error)
          }
          }
         }
-      
-      
 
     return (
         <View style={styles.container}>
@@ -132,105 +121,31 @@ import { Picker } from '@react-native-picker/picker';
               
                 />
                 </View>
-                <View
-                
+                <View style = {styles.TextInput}>
+                  <View
                     style = {{
-                        
-                        backgroundColor: '#e2e2e2',
-                        height: 50,
-                        margin: 20,
-                        justifyContent: 'center'
-                    }}> 
-                <Picker
-                        title = 'Select Category'
-                        selectedValue={category}
-                        mode="dropdown"
-                        style={{
-                            transform: [
-                               { scaleX: 1 }, 
-                               { scaleY: 1 },
-                            ],
-                        width: 400,
-                        bottom: 0,
-                        color: '#9e9e9e',
-                    
-                          }}
-                        onValueChange={(itemValue, itemIndex) => setCategory(itemValue)}
+                    alignContent: 'center',
+                    justifyContent: 'center',
+                    margin: 5,
+                  }}
+        
                     >
-                        <Picker.Item label="Food" value="Food" />
-                        <Picker.Item label="Travel" value="Travel" />
-                        <Picker.Item label="Hotel" value="Hotel" />
-                        <Picker.Item label="Restaurant" value="Restaurant" />
-                        <Picker.Item label="Grocery" value="Grocery" />
-                        <Picker.Item label="Wellness" value="Wellness" />
-                    </Picker>
-                    
-                    </View>
-                    <View
-                
-                    style = {{
-                        
-                        backgroundColor: '#e2e2e2',
-                        height: 50,
-                        margin: 5,
-                        justifyContent: 'center'
-                    }}> 
-                    <Picker
-                        title = 'Select Category'
-                        selectedValue={place}
-                        mode="dropdown"
-                        style={{
-                            transform: [
-                               { scaleX: 1 }, 
-                               { scaleY: 1 },
-                            ],
-                        width: 400,
-                        bottom: 0,
-                        color: '#9e9e9e',
-                    
-                          }}
-                        onValueChange={(itemValue, itemIndex) => setPlace(itemValue)}
-                    >
-                        <Picker.Item label="None" value="None" />
-                        <Picker.Item label="Local" value="Local" />
-                        <Picker.Item label="International" value="International" />
-                    </Picker>
+                    <FontAwesome5
+                      name = {'coins'}
+                      size ={15}
+                    />
                 </View>
-                <View
-                          
-                    style = {{
-                        
-                        backgroundColor: '#e2e2e2',
-                        height: 50,
-                        margin: 20,
-                        justifyContent: 'center'
-                    }}> 
-                <Picker
-                        title = 'Select Category'
-                        selectedValue={subcategory}
-                        mode="dropdown"
-                        style={{
-                            transform: [
-                               { scaleX: 1 }, 
-                               { scaleY: 1 },
-                            ],
-                        width: 400,
-                        bottom: 0,
-                        color: '#9e9e9e',
-                    
-                          }}
-                        onValueChange={(itemValue, itemIndex) => setSubcategory(itemValue)}
-                    >
-                        <Picker.Item label="None" value="None" />
-                        <Picker.Item label="Drinks" value="Drinks" />
-                        <Picker.Item label="Fast Food" value="FastFood" />
-                        <Picker.Item label="Fruits" value="Fruits" />
-                        <Picker.Item label="Liquors" value="Liquors" />
-                        <Picker.Item label="Meal" value="Meal" />
-                        <Picker.Item label="Pastry" value="Pastry" />
-                        <Picker.Item label="Vegan" value="Vegan" />
+                <TextInput
+                  onChangeText={(value) => setCategory(value)}
+                  value={category}
+                  label="Category"
+                  theme={{    
+                    colors: {
+                      primary: '#225'
+                      }
+                  }}
 
-                    </Picker>
+                />
                 </View>
                 <View style = {styles.TextInput}>
                   <View
@@ -327,9 +242,9 @@ import { Picker } from '@react-native-picker/picker';
                     />
                 </View>
                 <TextInput
-                onChangeText={(value) => setStatus(value)}
-                value={status}
-                label="Status"
+                onChangeText={(value) => setIndividual(value)}
+                value={individual}
+                label="Individual"
                 theme={{    
                     colors: {
                       primary: '#225'
@@ -397,6 +312,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#e2e2e2',
     },
 });
- 
-
-export default Add_Product;

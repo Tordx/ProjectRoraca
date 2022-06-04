@@ -2,6 +2,10 @@ import { StyleSheet, Text, View, Image,TouchableOpacity, SafeAreaView, FlatList 
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
 import {  } from 'react-native-gesture-handler';
+import { FlatList } from 'react-native-gesture-handler';
+import { useNavigation } from '@react-navigation/native';
+import { useDispatch } from 'react-redux';
+import { setSelectedItem } from '../../Redux/TaskReducer';
 
 export default function Drinks() {
     useEffect(() => {
@@ -9,6 +13,8 @@ export default function Drinks() {
         // StartsSync()
       }, []);
 
+      const dispatch = useDispatch();
+      const navigation = useNavigation(); 
     const [itemdata,setItemdata] = useState('')
 
     const getData = async() => {
@@ -18,7 +24,7 @@ export default function Drinks() {
           attachments: true
         });
         if(result.rows){
-            let modifiedArr = result.rows.map(function(item){
+            let modifiedArr = result.rows.map(item => {
              return item.doc
         });
         let filteredData = modifiedArr.filter(item => {
@@ -32,6 +38,12 @@ export default function Drinks() {
           }
     }  
 }
+        const DrinksItemView = (item) => {
+          console.log(item)
+          console.log('item')
+          dispatch(setSelectedItem(item))
+          navigation.navigate('ProductContainer')
+        }
 
         const renderItem = ({ item }) => {
             
@@ -39,12 +51,15 @@ export default function Drinks() {
             <TouchableOpacity>
               <View style = {styles.itemcontainer}>
                 <View style={styles.item}>
+            <TouchableOpacity onPress={() => DrinksItemView(item)}>
+              <View style={styles.item}>
                 <Image 
                 style={{width: 180, height: 250, borderRadius: 20, alignSelf: 'center' }}
                 resizeMode = 'cover'
                 source={{uri: item.Image}}
                 />
-                
+              </View>
+             </TouchableOpacity>   
               
                </View>
                <Text style={styles.title}>
@@ -61,7 +76,7 @@ export default function Drinks() {
             numColumns = {2}
             data={itemdata}
             renderItem={renderItem}
-            keyExtractor={item => item}
+            keyExtractor={item => String(item._id)}
             >       
             </FlatList>
         </SafeAreaView>

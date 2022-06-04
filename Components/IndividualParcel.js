@@ -8,6 +8,7 @@ const Individual_parcel = () => {
   const navigation = useNavigation();
 
     return (
+      
         <View style = {{backgroundColor: '#e2e2e2',
           height: 50, width: 250, borderRadius: 20, marginTop: 20, marginBottom: 10, justifyContent: 'center', alignSelf: 'center',
           shadowColor: "#000",
@@ -31,4 +32,3 @@ const Individual_parcel = () => {
     );
 };
 
-export default Individual_parcel;

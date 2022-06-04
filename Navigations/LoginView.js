@@ -2,7 +2,7 @@
 ////////////////////////////Customer can either sign in or sign up for new account///////////////////////////////
 /////////////////////////////////// to be exported to screencompnents/views /////////////////////////////////////
 
-import React, {useState} from 'react';
+import React, {useState ,useEffect} from 'react';
 import {
 
   View,
@@ -16,20 +16,26 @@ import {
   TouchableOpacity,
 
 } from 'react-native';
-import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
+import {remoteDB, remoteDBUser , localDBWOWDBUser , remoteDBOrder} from '../database/pouchDb';
+import { useDispatch } from 'react-redux';
+import {setTaskId, setItems , setDones, setSelectedItem , setOrders} from "../Redux/TaskReducer"
+
 
 
  function Login_view ({navigation}) {
 
-  // const LoginData = async ()  => {
-    
-  // }
+  useEffect(() => {
+    orders()
+    // newDatas()
+    // StartsSync()
+  }, []);
 
   const [username,setUsername] = useState('')
   const [password,setPassword] = useState('')
   const imagebg = {uri: 'https://i.imgur.com/6YOeUuB.png'};
+  const dispatch = useDispatch();
   
-
+  
   const LoginData = async () => {
     if((username.length == 0) && (password != password) ){
       Alert.alert('Username and password not match')
@@ -41,11 +47,10 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
           // Alert.alert("Succesfull Logging in")
           if(doc.Role == 'Seller'){
             navigation.navigate('SellerNav');
-
           }else if(doc.Role == 'Customer'){
             navigation.navigate('CustomerNav')
           }else if(doc.Role == 'Driver'){
-            navigation.navigate('DriverNav')
+            navigation.navigate('Dri')
           } else {console.log('DriverNav')}
          
         } catch (err) {
@@ -54,6 +59,19 @@ import {remoteDB, remoteDBUser , localDBWOWDBUser} from '../database/pouchDb';
         }
     }
   }
+
+  const orders = async() => {
+    try {
+        var result = await remoteDBOrder.allDocs({
+          include_docs: true,
+        });
+        dispatch(setOrders(result.rows))
+        console.log(result)
+        console.log('result')
+      } catch (err) {
+        console.log(err);
+      }
+}
 
 
   const onPressHandler = () => {

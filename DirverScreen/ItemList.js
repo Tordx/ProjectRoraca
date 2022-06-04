@@ -22,7 +22,7 @@ export default function Item_list() {
         }
         </View>
          
-      <View style ={{flexDirection: 'row', position: 'absolute', bottom: 20,}} >
+      <View style ={{flexDirection: 'row', position: 'absolute', bottom: 50,}} >
       <TouchableOpacity style = {styles.TH}
       onPress={()=> setshowParcel(true)}
       >
