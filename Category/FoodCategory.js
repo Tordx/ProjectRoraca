@@ -7,6 +7,8 @@ import Fastfood from '../Images/Fastfood.png'
 import Milktea from '../Images/Milktea.png'
 // create a component
 export default function Food_category () {
+
+    
     return (
         <View style={styles.container}>
             <View style = {{flexDirection: 'row', width: '100%', alignItems: 'center', marginBottom: 10, marginLeft: 7,}}>

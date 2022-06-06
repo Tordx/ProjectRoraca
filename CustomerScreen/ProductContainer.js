@@ -15,14 +15,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setItems } from '../Redux/TaskReducer';
 import { useNavigation } from '@react-navigation/native';
 
-
-    const ProductImage = {uri: 'https://cdn.apartmenttherapy.info/image/upload/f_jpg,q_auto:eco,c_fill,g_auto,w_1500,ar_1:1/k%2Farchive%2Fc54907276a7cb6e0545ae2128bdc984e86b6cb9d'}
-    const Title = 'Chicken Alfredo Pasta'
-    const Price = '$47.00'
-    const Rating = '★★★★★'
-    const Description = '  A freaking nice pasta dish that would definitely make you droll, freshly homemade pasta with a savoury cream topped with seared chicken and finished with parmesan and parsley '
-
-
 export default function Product_container(){
 
     const dispatch = useDispatch();

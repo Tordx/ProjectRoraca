@@ -10,21 +10,23 @@ import {
   TextInput,
   ScrollView,
   Text,
+  SafeAreaView,
 
 } from 'react-native';
+
 import {Divider} from 'react-native-paper';
 import Image_slider from '../Components/ImageSlider';
 import Individual_parcel from '../Components/IndividualParcel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import { useNavigation } from '@react-navigation/native';
 import MainCategory from '../Category/Category';
 import LinearGradient from 'react-native-linear-gradient';
-import {Flight_category} from '../Category/FlightCategory';
+import Flight_category from '../Category/FlightCategory';
 import Food_category from '../Category/FoodCategory';
-import {Flight_home} from '../Category/FlightCategory_/FlightHome'
-import { Food_Home } from '../Category/FoodCategory/FoodHome';
+import Flight_home from '../Category/FlightCategory_/FlightHome'
+import Food_Home from '../Category/FoodCategory/FoodHome';
 import roracaads from '../Images/roracaads.png';
- function Default_Screen ({navigation}) {
+
+export default function Default_Screen ({navigation}) {
 
 
   const Login = () => {
@@ -35,7 +37,7 @@ import roracaads from '../Images/roracaads.png';
 
   return (
 
-    <View style = {styles.body}>
+    <SafeAreaView style = {styles.body}>
 
       
         <ScrollView 
@@ -65,12 +67,12 @@ import roracaads from '../Images/roracaads.png';
             <Divider/>
           </View>
               <View style = {{marginTop: 20,}}>
-               <Flight_category/>
-               <Flight_home/>
-               <Divider/>
-               <Food_category/>
-               <Food_Home/>
-               <Divider/>
+                <Food_category/>
+                <Food_Home/>
+                <Divider/>
+                <Flight_category/>
+                <Flight_home/>
+                <Divider/>
               </View>
               <View  style = {{paddingTop: 250,}}>
               </View>
@@ -155,7 +157,7 @@ import roracaads from '../Images/roracaads.png';
               }}>ror<Text style  = {{color: '#225'}}>aca</Text>
             </Text>
         </LinearGradient>
-    </View>
+    </SafeAreaView  >
   )
   }
 const styles = StyleSheet.create({
@@ -197,6 +199,5 @@ const styles = StyleSheet.create({
   }
 
 
-})
-
-export default Default_Screen;
+}
+)

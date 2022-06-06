@@ -12,7 +12,7 @@ import React,{useState,useEffect} from 'react'
 import { Divider } from 'react-native-paper';
 import {remoteDBItem} from '../../database/pouchDb';
 
-export const Food_Home = () => {
+export default function Food_Home() {
 
     useEffect(() => {
         getData()
@@ -32,7 +32,7 @@ export const Food_Home = () => {
              return item.doc
         });
         let filteredData = modifiedArr.filter(item => {
-            return item.Category === 'Meal';
+            return item.Category === 'Food';
           });
           
           if(filteredData) {

@@ -14,7 +14,7 @@ import TMHSPA from '../Images/TMHSPA.png'
 
 const images  = [ctyapp, emirates, lecoucou, TMHSPA];
 
-const Image_slider = () => {
+export default function Image_slider() {
 
     const [currentImage, setCurrentImage] = useState(null);
 
@@ -36,4 +36,3 @@ const Image_slider = () => {
         </SafeAreaView>
     );
 }
-export default Image_slider;

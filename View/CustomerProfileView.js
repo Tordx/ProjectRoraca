@@ -21,7 +21,7 @@ import { useNavigation } from '@react-navigation/native';
 import { useSelector } from 'react-redux';
 
 
-export function Profile_view(){
+export default function Profile_view(){
 
 useEffect(() => {
   DriverHistoryData()
@@ -182,6 +182,7 @@ const renderItem = ({ item }) => (
       <ScrollView style = {{backgroundColor: '#e2e2e2', width: 475,}} >
       <View style={styles.container}>
             <FlatList
+            showsVerticalScrollIndicator = {false}
             data={newdata}
             renderItem={renderItem}
             keyExtractor={item => String(item.doc._id)}

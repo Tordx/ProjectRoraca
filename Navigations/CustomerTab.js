@@ -3,9 +3,9 @@
 import React from 'react';
 
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Product_view } from '../View/CustomerProductView';
-import { Chat_view } from '../View/CustomerChatView';
-import { Profile_view } from '../View/CustomerProfileView';
+import Product_view from '../View/CustomerProductView';
+import Chat_view  from '../View/CustomerChatView';
+import Profile_view from '../View/CustomerProfileView';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import Customer_notification from '../View/CustomerNotification';
 

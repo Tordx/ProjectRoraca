@@ -36,7 +36,7 @@ function Version(props) {
   );
 }
 
-export  function Home_drawer() {
+export const Home_drawer = () => {
   return (
 
     <Drawer.Navigator 

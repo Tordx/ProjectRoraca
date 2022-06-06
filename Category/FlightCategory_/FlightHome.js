@@ -12,7 +12,7 @@ import React,{useState,useEffect} from 'react'
 import { Divider } from 'react-native-paper';
 import {remoteDBItem} from '../../database/pouchDb';
 
-export const Flight_home = () => {
+export default function Flight_home () {
 
     useEffect(() => {
         getData()

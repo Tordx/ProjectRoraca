@@ -67,7 +67,7 @@ function Create_view({navigation}){
              console.log(response)
            })
            .catch(err=>console.log(err))
-           Alert.alert('Welcome to Roraca!', 'please re-login your account')
+           Alert.alert('Welcome to roraca!', 'please re-login your account');
            navigation.navigate('LoginView');
          } catch (error) {
           console.log(error)

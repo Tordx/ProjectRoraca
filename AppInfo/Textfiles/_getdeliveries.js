@@ -44,6 +44,7 @@ const Tracklocation = () => {
 
             {
                 showplaceorder? <Text style  = {{margin: 10}}>Error 404: text info not finished</Text> : null
+                
             }
         </View> 
     );

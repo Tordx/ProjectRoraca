@@ -304,6 +304,7 @@ import { Picker } from '@react-native-picker/picker';
                 onChangeText={(value) => setDeliveryfee(value)}
                 value={deliveryfee}
                 label="Delivery fee"
+                keyboardType='numeric'
                 theme={{    
                     colors: {
                       primary: '#225'

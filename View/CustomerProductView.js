@@ -14,18 +14,20 @@ import {
  
 
 } from 'react-native';
+
 import {Divider} from 'react-native-paper';
 import Image_slider from '../Components/ImageSlider';
 import Individual_parcel from '../Components/IndividualParcel';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
-import LinearGradient  from 'react-native-linear-gradient';
 import MainCategory from '../Category/Category';
-import { Flight_category } from '../Category/FlightCategory';
-import { Flight_home } from '../Category/FlightCategory_/FlightHome';
-import { Food_category } from '../Category/FoodCategory';
-import { Food_Home } from '../Category/FoodCategory/FoodHome';
-import roracaads from '../Images/roracaads.png'
-export function Product_view({navigation}){
+import LinearGradient from 'react-native-linear-gradient';
+import Flight_category from '../Category/FlightCategory';
+import Food_category from '../Category/FoodCategory';
+import Flight_home from '../Category/FlightCategory_/FlightHome'
+import Food_Home from '../Category/FoodCategory/FoodHome';
+import roracaads from '../Images/roracaads.png';
+
+export default function Product_view({navigation}){
 
   useEffect(() => {
     const backHandler = BackHandler.addEventListener('hardwareBackPress', () => true)

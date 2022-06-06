@@ -92,7 +92,7 @@ export default function International_flights() {
             
             source={PAL}
             resizeMode = 'cover'
-            style = {{width: 160, height: 100, alignSelf: 'center', borderRadius: 20, margin: 10,}}
+            style = {{width: 170, height: 100, alignSelf: 'center', borderRadius: 20, margin: 10,}}
             ></Image>
             <Image
             

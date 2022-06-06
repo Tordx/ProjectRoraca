@@ -7,7 +7,7 @@ import International from '../Images/International.png'
 import local from '../Images/local.png'
 import { useNavigation } from '@react-navigation/native';
 
-export const Flight_category = () => {
+export default function Flight_category() {
 
     const navigation = useNavigation('');
 

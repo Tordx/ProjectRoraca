@@ -58,7 +58,7 @@ const Item = ({ title }) => (
   </View>
 );
 
-export const Chat_view = () => {
+export default function Chat_view () {
   const renderItem = ({ item }) => (
     <Item title={item.title} />
   );

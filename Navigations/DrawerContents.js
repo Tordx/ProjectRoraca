@@ -13,7 +13,7 @@ import { useNavigation } from '@react-navigation/native';
 import { DrawerContentScrollView, DrawerItemList, DrawerItem } from '@react-navigation/drawer';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 
-function Drawer_Contents(props) {
+export default function Drawer_Contents(props) {
 
     const navigation = useNavigation();
   
@@ -50,9 +50,6 @@ function Drawer_Contents(props) {
             </View>
     );
   }
-        
-        {/* <DrawerItem label="Logout" onPress={() => navigation.navigate('Home')}
-         /> */}
 
 const styles = StyleSheet.create({
     container: {
@@ -62,6 +59,3 @@ const styles = StyleSheet.create({
         backgroundColor: '#2c3e50',
     },
 });
-
-//make this component available to the app
-export default Drawer_Contents;

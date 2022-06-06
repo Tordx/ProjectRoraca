@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { 
     
     View,
@@ -6,13 +6,18 @@ import {
     StyleSheet,
     Pressable,
     Image, 
+    SafeAreaView,
+    FlatList,
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import { Divider } from 'react-native-paper';
+import {remoteDBItem} from '../../database/pouchDb';
+import { useDispatch } from 'react-redux';
 
 export default function Food() {
 
   const navigation = useNavigation(); 
-
+  const dispatch = useDispatch();
   const Liquors = () => {
     console.log('yes')
     navigation.navigate('Liquors')
@@ -39,7 +44,66 @@ export default function Food() {
     navigation.navigate('Vegan')
   }
 
-  
+  useEffect(() => {
+    getData()
+    // StartsSync()
+  }, []);
+
+
+const [itemdata,setItemdata] = useState('')
+
+const getData = async() => {
+    
+    var result = await remoteDBItem.allDocs({
+      include_docs: true,
+      attachments: true
+    });
+    if(result.rows){
+        let modifiedArr = result.rows.map(function(item){
+         return item.doc
+    });
+    let filteredData = modifiedArr.filter(item => {
+        return item.Category === 'Food';
+      });
+      if(filteredData) {
+          let newFilterData = filteredData.map(item => {
+              return item
+          })
+          setItemdata(newFilterData)
+      }
+    }  
+  }
+
+const renderItem = ({ item }) => {
+            
+  return(
+  <TouchableOpacity>
+    <View style = {styles.itemcontainer}>
+      <View style={styles.item}>
+      <Image 
+      style={{width: 150, height: 150, borderRadius: 10, alignSelf: 'center', }}
+      resizeMode = 'cover'
+      source={{uri: item.Image}}
+      />
+      
+    
+     </View>
+          <View style = {{margin: 2, justifyContent: 'center'}}>  
+              <Text style={styles.title}>
+              {item._id}
+              </Text>
+      
+              <Text style={[styles.title, {color: '#ffa45e'}]}>
+              ₱{item.Price}
+              </Text>
+              <Text style={[styles.title, {color: '#141414'}]}>
+              {item.subcategory}
+              </Text>
+          </View>  
+      </View>
+  </TouchableOpacity>
+  )
+}
 
   return (
 
@@ -182,6 +246,20 @@ export default function Food() {
         </View>    
       </View>
   </View>
+    <SafeAreaView style={styles.container}>
+        <View style={styles.container}>
+            <Divider/>
+            <FlatList
+            horizontal={false}
+            numColumns = {2}
+            showsHorizontalScrollIndicator = {false}
+            data={itemdata}
+            renderItem={renderItem}
+            keyExtractor={item => item}
+            >       
+            </FlatList>
+        </View>
+        </SafeAreaView>
   </View>
 
     );

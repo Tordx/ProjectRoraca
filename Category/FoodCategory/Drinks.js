@@ -1,8 +1,6 @@
 import { StyleSheet, Text, View, Image,TouchableOpacity, SafeAreaView, FlatList } from 'react-native'
 import React,{useState,useEffect} from 'react'
 import { remoteDBItem } from '../../database/pouchDb';
-import {  } from 'react-native-gesture-handler';
-import { FlatList } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch } from 'react-redux';
 import { setSelectedItem } from '../../Redux/TaskReducer';

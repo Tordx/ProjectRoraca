@@ -10,7 +10,6 @@ import {
 import Customer_Tab from './CustomerTab'
 import Help_center from '../AppInfo/Help';
 import Rates_ from '../AppInfo/Rates'
-
 import Tracking_ from '../AppInfo/Tracking';
 import { useNavigation } from '@react-navigation/native';
 import Drawer_Contents from './DrawerContents';
@@ -18,22 +17,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import _checkout from '../CustomerScreen/checkout';
 
 const Drawer = createDrawerNavigator();
-
-const Logout = (props) => {
-
-    const navigation = useNavigation();
-
-    return (
-
-        <DrawerContentScrollView {...props} >
-            <DrawerItemList {...props} />
-            <DrawerItem label = 'Logout'
-            onPress={() => navigation.navigate('HomeNav')}/>
-        </DrawerContentScrollView>
-
-    )
-
-}
 
 
 

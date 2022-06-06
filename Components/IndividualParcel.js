@@ -3,7 +3,7 @@ import React from 'react';
 import { View, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-const Individual_parcel = () => {
+export default function Individual_parcel () {
 
   const navigation = useNavigation();
 
